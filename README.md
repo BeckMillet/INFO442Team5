@@ -14,3 +14,4 @@ Ask any person if they feel like they have enough money, and there is a good cha
 * Thoa Nguyen (PM)
 * Kevin Chiu (CDO)
 * Beck Millet (CTO)
+* Shannon Gatta (CTO)
