@@ -27,4 +27,5 @@ Underneath the form are the user's historical transactions. This card view place
 
 The web app's interface layout is responsive to different screen sizes, but prioritize the mobile experience, where the entry form and status are viewable without scrolling on a standard mobile screen.
 
+Below is a pseudo-code picture of the algorithm that calculates “status”
 ![](/Algorithm.png)
