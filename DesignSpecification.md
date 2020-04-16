@@ -9,7 +9,7 @@ We envision an entry form in which users can quickly and manually add transactio
 
 The interface is simple. Users will be prompted to login and provide their credentials.
 
-![](/MAIN.png)
+![](/MAIN_3.png)
 
 Users will be able to see their daily budget, their transactions, and whether or not they are being consistent with their budgeting goals on the single screen.
 
