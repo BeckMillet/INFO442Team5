@@ -17,6 +17,9 @@ Users will be able to see their daily budget, their transactions, and whether or
 
 On the top of the screen, users will have a brief summary of their expenses. "Daily Budget" refers to how much money they have spent out of how much they want to spend today. "Rollover" is a culmination of the user's expenses and compares it to their overall budget. It answers the question whether has the user been consistently meeting his or her goals every day, and by how much.
 
+![](/MAIN_4.png)
+Users may adjust their daily budget goal by interacting with the text field.
+
 ![](/MAIN_2.png)
 
 A static form is located underneath the summary so that the user can manually enter his or her transactions. The form asks for a category, date, amount, and a description. After the text fields are completed and the submit button is pressed, the summary calculations take place and the form is cleared.
