@@ -22,7 +22,7 @@ Users may adjust their daily budget goal by interacting with the text field.
 
 ![](/MAIN_2.png)
 
-A static form is located underneath the summary so that the user can manually enter his or her transactions. The form asks for a category, date, amount, and a description. After the text fields are completed and the submit button is pressed, the summary calculations take place and the form is cleared.
+A static form is located underneath the summary so that the user can manually enter his or her transactions. The form asks for the date, amount, and a description. After the text fields are completed and the submit button is pressed, the summary calculations take place and the form is cleared.
 
 ![](/MAIN_3.png)
 
