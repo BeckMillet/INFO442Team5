@@ -13,22 +13,22 @@ The interface is simple. Users will be prompted to login and provide their crede
 
 Users will be able to see their daily budget, their transactions, and whether or not they are being consistent with their budgeting goals on the single screen.
 
-![](/MAIN_1.png)
+![](designImages/MAIN_1.png)
 
 On the top of the screen, users will have a brief summary of their expenses. "Daily Budget" refers to how much money they have spent out of how much they want to spend today. "Rollover" is a culmination of the user's expenses and compares it to their overall budget. It answers the question whether has the user been consistently meeting his or her goals every day, and by how much.
 
-![](/MAIN_4.png)
+![](designImages/MAIN_4.png)
 Users may adjust their daily budget goal by interacting with the text field.
 
-![](/MAIN_2.png)
+![](designImages/MAIN_2.png)
 
 A static form is located underneath the summary so that the user can manually enter his or her transactions. The form asks for the date, amount, and a description. After the text fields are completed and the submit button is pressed, the summary calculations take place and the form is cleared.
 
-![](/MAIN_3.png)
+![](designImages/MAIN_3.png)
 
 Underneath the form are the user's historical transactions. This card view places recent transactions on the top of the list and older ones on the bottom. Each card provides information that was manually inputted by the user and serves to document all expenses that lead to the overall summary.
 
 The web app's interface layout is responsive to different screen sizes, but prioritize the mobile experience, where the entry form and status are viewable without scrolling on a standard mobile screen.
 
 Below is a pseudo-code picture of the algorithm that calculates “status”
-![](/Algorithm.png)
+![](designImages/Algorithm.png)
