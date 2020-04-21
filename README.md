@@ -1,6 +1,6 @@
 # Organization Name: Sprout
 
-![](../designImages/logo.png)
+![](designImages/logo.png)
 
 ## Mission Statement: 
 Reimagine what it means to “budget” and take control of your own spending. 
