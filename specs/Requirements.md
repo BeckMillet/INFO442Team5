@@ -4,7 +4,7 @@
 1. The webpage is responsive and all transaction entry components will fit within the iPhone X standard size mobile screen (375x812px).
 2. The app will be divided into three sections: budget summary depicting ‘daily budget’ and the ‘rollover’  from the user’s inputted transactions, an ‘entry form’, and a list of latest transactions. Each component is defined below.
 
-![](designImages/MAIN_2.png)
+![]('designImages/MAIN_2.png')
 
 ## Budget Summary (Figure 1)
 3. The budget summary area will appear at the top of the screen.
@@ -17,13 +17,13 @@
 8. The ‘entry form’ has two required text fields (labeled amount spent and item name), and an optional date field (labeled date). The text field labeled amount spent will be limited to positive, non-zero numbers.
 9. The default value for the date field will be the current date (determined by the timestamp on the users’ local device). Even though the user does not include time, the program collects both date and time. 
 
-![](designImages/TRANSACTION_CARD.png)
+![]('designImages/TRANSACTION_CARD.png')
 
 ## Latest Transaction (Figure 2)
 10. Below the entry form, the program will display a list of transactions the user has entered, sorted from the most recent date and time (descending order) of the entered transactions. 
 11. The latest transaction section will be scrollable to allow users to view all of the transactions the user has entered.
 
-![](designImages/LOGIN.png)
+![]('designImages/LOGIN.png')
 
 ## Flex Requirement: Login Page (Figure 3)
 12. The login page will consist of “Login” and “Sign Up” buttons that will deliver the user to the Firebase Google Cloud login or sign up page.
