@@ -4,7 +4,7 @@
 1. The webpage is responsive and all transaction entry components will fit within the iPhone X standard size mobile screen (375x812px).
 2. The app will be divided into three sections: budget summary depicting ‘daily budget’ and the ‘rollover’  from the user’s inputted transactions, an ‘entry form’, and a list of latest transactions. Each component is defined below.
 
-![]('designImages/MAIN_2.png')
+![](INFO442Team5/designImages/MAIN_2.png)
 
 ## Budget Summary (Figure 1)
 3. The budget summary area will appear at the top of the screen.
