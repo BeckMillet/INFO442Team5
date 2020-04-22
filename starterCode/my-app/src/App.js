@@ -1,4 +1,4 @@
-import React, {Component} from '../node_modules/@types/react';
+import React, {Component} from 'react';
 import './App.css';
 
 import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseAuth';
@@ -25,9 +25,7 @@ class App extends Component{
     firebase.auth().onAuthStateChanged( (firebaseUser) => {
       this.setState({loading: false});
       this.setState({user: firebaseUser});
-    })
-    
-    
+    })    
   }
 
   handleSignOut = () => {
