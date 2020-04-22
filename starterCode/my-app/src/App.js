@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-
 import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseAuth';
 import firebase from '../node_modules/firebase';
 
@@ -32,7 +31,7 @@ class App extends Component{
     this.setState({errorMessage:null});
     firebase.auth().signOut();
   }
-
+  
   render(){
     let content = null;
 
@@ -52,7 +51,7 @@ class App extends Component{
     } else {
       content = (
         <div>
-          content to render here
+          content to render would go here
           <button className="btn btn-warning" onClick={this.handleSignOut}>
             Log Out {this.state.user.displayName}
           </button>
