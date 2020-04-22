@@ -7,6 +7,8 @@
 **Figure 1: Budget Summary & Entry Transaction Form**
 
 ![](../designImages/MAIN_4.png)
+
+
 ![](../designImages/MAIN_2.png)
 
 ## Budget Summary (Figure 1)
