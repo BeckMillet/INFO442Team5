@@ -6,7 +6,7 @@
 
 **Figure 1: Budget Summary & Entry Transaction Form**
 
-![](../designImages/MAIN_2.png)
+![](../designImages/MAIN_4.png)
 
 ## Budget Summary (Figure 1)
 3. The budget summary area will appear at the top of the screen.
