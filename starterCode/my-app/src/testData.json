@@ -1,0 +1,33 @@
+{"transactions": [
+    {
+        "amountSpent": 3.25,
+        "itemName": "Coffee",
+        "date": "2/5/2020"
+    },
+    {
+        "amountSpent": 15,
+        "itemName": "Yoga",
+        "date": "2/6/2020"
+    },
+    {
+        "amountSpent": 17.51,
+        "itemName": "Teriyaki",
+        "date": "2/6/2020"
+    },
+    {
+        "amountSpent": 9.03,
+        "itemName": "Trader Joes",
+        "date": "2/8/2020"
+    },
+    {
+        "amountSpent": 27.07,
+        "itemName": "",
+        "date": "2/9/2020"
+    },
+    {
+        "amountSpent": 7.5,
+        "itemName": "Drinks w Josh",
+        "date": "2/10/2020"
+    }
+]
+}
