@@ -13,15 +13,12 @@ class App extends Component {
     this.state = {
       user: null,
       loading: true,
-      entryAmount: '',
-      entryDate: '',
-      entryName: '',
+      lastDateOpened: '',
       dailyBudget: '',
       budgetToDate: '',
       expensesToDate: '',
       transactions: []
     };
-    this.fieldChange = this.fieldChange.bind(this);
   }
 
 
@@ -51,37 +48,23 @@ class App extends Component {
     firebase.auth().signOut();
   }
 
-  fieldChange(elem) {
-    const newState = {};
-    newState[elem.currentTarget.name] = elem.currentTarget.value;
-    this.setState(newState);
-  }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    let formDate = this.state.entryDate;
-    if (formDate === '') {
-      /* requirement 9 */
-      formDate = new Date();
-    } else {
-      /* requirement 8 */
-      formDate = new Date(formDate);
-    };
+  addTransToApp = (entry) => {
+    let transactions =  this.state.transactions
+    transactions.push(entry);
 
-    /* Submits the form content to the transaction list in state */
-    /* TODO add a sorting algorithm that handles a user entering a historical date */
-    this.state.transactions.push({
-      amountSpent: this.state.entryAmount,
-      date: formDate,
-      itemName: this.state.entryName
-    })
-
-    /* resets the form content */
+    /* Requirement 10 */
+    let sorted = transactions.sort((a, b) => {
+      return Date.parse(b.date) - Date.parse(a.date);
+    });
+    let id = 1;
+    for (let entry of sorted) {
+      entry.id = id;
+      id++;
+    }
     this.setState({
-      entryAmount: '',
-      entryName: '',
-      entryDate: '',
-    })
+      transactions: sorted
+    });
   }
 
 
@@ -102,63 +85,27 @@ class App extends Component {
         </div>
       );
     } else {
-      
       content = (
 
         <div>
-          {/* {console.log(this.state.transactions)} */} {/* test */}
           {/* Beginning of main page */}
 
-
-
-          <div>{/* Beginning of Entry Form */}
-            <form onSubmit={this.handleSubmit} noValidate>
-              <div>
-
-                {/* FormFields */}
-                <div className='card'>
-                  <div>
-                    <input className="form-control"
-                      type="number"
-                      name="entryAmount"
-                      placeholder="Amount*"
-                      required
-                      /* TODO require positive non-zero numbers */
-                      value={this.state.entryAmount}
-                      onChange={this.fieldChange} />
-                  </div>
-                  <div>
-                    <input className="form-control"
-                      type="text"
-                      name="entryName"
-                      placeholder="Item name"
-                      /* TODO add a maximimum length */
-                      value={this.state.entryName}
-                      onChange={this.fieldChange} />
-                  </div>
-                  <div>
-                    <input className="form-control"
-                      type="date"
-                      name="entryDate"
-                      placeholder=""
-                      /* TDO how to signal that this autofills if empty? */
-                      value={this.state.entryDate}
-                      onChange={this.fieldChange} />
-                  </div>
-                </div>
-
-              </div>
-
-              {/* FormSubmit */}
-              <button type="submit" className="btn btn-block btn-dark margin">Submit!</button>
-
-            </form>
-          </div>{/* End of Entry Form */}
+          <Summary
+            lastDateOpened={this.state.lastDateOpened}
+            dailyBudget={this.state.dailyBudget}
+            budgetToDate={this.state.budgetToDate}
+            expensesToDate={this.state.expensesToDate}
+          />
+          {/* Beginning of Entry Form */}
+          <EntryForm
+            addTransToApp={this.addTransToApp}
+          />
+          {/* End of Entry Form */}
 
           {/* Beginning of history */}
 
-          
-          {<HistoryCards transactions={this.state.transactions} />}
+          {<HistoryCards
+            transactions={this.state.transactions} />}
 
           {/* End of main page */}
           <button className="btn btn-warning" onClick={this.handleSignOut}>
@@ -172,8 +119,109 @@ class App extends Component {
 
 }
 
+class Summary extends Component {
+
+
+  render() {
+    let rollover = this.props.budgetToDate - this.props.expensesToDate;
+
+    return 'the summary!'
+  }
+}
+
+class EntryForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      entryAmount: '',
+      entryDate: '',
+      entryName: ''
+    };
+    this.fieldChange = this.fieldChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  fieldChange(elem) {
+    const newState = {};
+    newState[elem.currentTarget.name] = elem.currentTarget.value;
+    this.setState(newState);
+  }
+
+  handleSubmit = (event) => {
+
+    event.preventDefault();
+    let formDate = this.state.entryDate;
+    if (formDate === '') {
+      /* requirement 9 */
+      formDate = new Date();
+    } else {
+      /* requirement 8 */
+      formDate = new Date(formDate);
+    };
+    this.props.addTransToApp({
+      amountSpent: this.state.entryAmount,
+      date: formDate.toLocaleDateString(),
+      itemName: this.state.entryName
+    })
+
+    /* resets the form content */
+    this.setState({
+      entryAmount: '',
+      entryName: '',
+      entryDate: '',
+    })
+
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit} noValidate>
+          <div>
+
+            {/* FormFields */}
+            <div className='card'>
+              <div>
+                <input className="form-control"
+                  type="number"
+                  name="entryAmount"
+                  placeholder="Amount*"
+                  required
+                  /* TODO require positive non-zero numbers */
+                  value={this.state.entryAmount}
+                  onChange={this.fieldChange} />
+              </div>
+              <div>
+                <input className="form-control"
+                  type="text"
+                  name="entryName"
+                  placeholder="Item name"
+                  /* TODO add a maximimum length */
+                  value={this.state.entryName}
+                  onChange={this.fieldChange} />
+              </div>
+              <div>
+                <input className="form-control"
+                  type="date"
+                  name="entryDate"
+                  placeholder=""
+                  /* TDO how to signal that this autofills if empty? */
+                  value={this.state.entryDate}
+                  onChange={this.fieldChange} />
+              </div>
+            </div>
+
+          </div>
+
+          {/* FormSubmit */}
+          <button type="submit" className="btn btn-block btn-dark margin">Submit!</button>
+
+        </form>
+      </div>)
+  }
+}
+
 class HistoryCards extends Component {
-  
   render() {
     let transactions = this.props.transactions
     let renderedEntries = transactions.map((eachEntry) => {
@@ -192,5 +240,13 @@ class HistoryCards extends Component {
     return renderedEntries
   }
 }
+
+function daysBetween(passedDate) {
+  let present = new Date();
+  passedDate = new Date(passedDate);
+  let days = (present.getTime() - passedDate.getTime()) / (1000 * 3600 * 24);
+  return days;
+}
+
 
 export default App;
