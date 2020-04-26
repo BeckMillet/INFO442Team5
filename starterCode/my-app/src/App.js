@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       user: null,
       loading: true,
+      lastDateChanged: '',
       lastDateOpened: '',
       dailyBudget: '',
       budgetToDate: '',
@@ -38,8 +39,29 @@ class App extends Component {
       this.setState({ loading: false });
       this.setState({ user: firebaseUser });
     })
+
     /* TODO delete sample data */
-    this.setState({ transactions: SAMPLE_TRANSACTIONS.transactions })
+    this.setState({
+      transactions: SAMPLE_TRANSACTIONS.transactions
+    })
+    this.setState({
+      dailyBudget: 25
+    })
+    this.setState({
+      lastDateChanged: '4/20/2020'
+    })
+    this.setState({
+      expensesToDate: 79.36
+    })
+
+    this.setState({
+      budgetToDate: 100
+    })
+
+    this.setState({
+      lastDateOpened: new Date('4/23/2020')
+    })
+
   }
 
   /* firebase */
@@ -50,7 +72,7 @@ class App extends Component {
 
 
   addTransToApp = (entry) => {
-    let transactions =  this.state.transactions
+    let transactions = this.state.transactions
     transactions.push(entry);
 
     /* Requirement 10 */
@@ -65,6 +87,46 @@ class App extends Component {
     this.setState({
       transactions: sorted
     });
+    /* updates expenses to date */
+    let expensesToDate = this.state.expensesToDate + entry.amountSpent;
+    this.setState({
+      expensesToDate: expensesToDate
+    });
+  }
+
+  handleBudgetChange = (updates) => {
+    this.setState({
+      lastDateChanged: updates.lastDateChanged
+    })
+    this.setState({
+      dailyBudget: updates.dailyBudget
+    })
+  }
+
+  calcBudgetToDate = () => {
+    let today = new Date();
+    let lastOpened = new Date(this.state.lastDateOpened);
+
+    if (lastOpened.toLocaleDateString() !== today.toLocaleDateString()) {
+
+      /* caluculate days that have passed. I know its ugly. I hate it */
+      lastOpened = Date.UTC(lastOpened.getFullYear(), lastOpened.getMonth(), lastOpened.getDate());
+      let present = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
+      let oneDay = 1000 * 60 * 60 * 24;
+      let days = ((present -oneDay) - lastOpened) / oneDay;
+
+      /* calculates amount to add to budget to date */
+      let val = this.state.budgetToDate + days * this.state.dailyBudget
+      this.setState({
+        budgetToDate: val
+      })
+
+      this.setState({
+        lastDateOpened: today.toLocaleDateString()
+      })
+    
+    }
+
   }
 
 
@@ -85,16 +147,18 @@ class App extends Component {
         </div>
       );
     } else {
+      this.calcBudgetToDate()
       content = (
 
         <div>
           {/* Beginning of main page */}
 
           <Summary
-            lastDateOpened={this.state.lastDateOpened}
+            lastDateChanged={this.state.lastDateChanged}
             dailyBudget={this.state.dailyBudget}
             budgetToDate={this.state.budgetToDate}
             expensesToDate={this.state.expensesToDate}
+            handleBudgetChange={this.handleBudgetChange}
           />
           {/* Beginning of Entry Form */}
           <EntryForm
@@ -120,12 +184,70 @@ class App extends Component {
 }
 
 class Summary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      updateDailyBudget: '',
+    };
+    this.fieldChange = this.fieldChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+  fieldChange(elem) {
+    const newState = {};
+    newState[elem.currentTarget.name] = elem.currentTarget.value;
+    this.setState(newState);
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    
+    let newDateChanged = new Date();
+    this.props.handleBudgetChange({
+      lastDateChanged: newDateChanged.toLocaleDateString(),
+      dailyBudget: Number(this.state.updateDailyBudget)
+    })
+
+    /* resets the form content */
+    this.setState({
+      updateDailyBudget: '',
+    })
+
+  }
 
 
   render() {
-    let rollover = this.props.budgetToDate - this.props.expensesToDate;
+    let rollover = this.props.budgetToDate + this.props.dailyBudget - this.props.expensesToDate;
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit} noValidate>
+          <div>
+            <input className="form-control"
+              type="number"
+              name="updateDailyBudget"
+              placeholder='change daily budget'
+              required
+              /* TODO require positive non-zero numbers */
+              value={this.state.updateDailyBudget}
+              onChange={this.fieldChange} />
+          </div>
 
-    return 'the summary!'
+
+          {/* button */}
+          <button type="submit" className="btn">Update!</button>
+
+        </form>
+
+        <div>
+          <Card>
+            <CardTitle>Rollover is:  {rollover} </CardTitle>
+            <CardSubtitle>Your daily budget is: {this.props.dailyBudget} </CardSubtitle>
+            <CardText> Your budget to date is: {(this.props.budgetToDate + this.props.dailyBudget)}</CardText>
+          </Card>
+        </div>
+      </div>
+    )
   }
 }
 
@@ -214,7 +336,7 @@ class EntryForm extends Component {
           </div>
 
           {/* FormSubmit */}
-          <button type="submit" className="btn btn-block btn-dark margin">Submit!</button>
+          <button type="submit" className="btn">Submit!</button>
 
         </form>
       </div>)
@@ -239,13 +361,6 @@ class HistoryCards extends Component {
     });
     return renderedEntries
   }
-}
-
-function daysBetween(passedDate) {
-  let present = new Date();
-  passedDate = new Date(passedDate);
-  let days = (present.getTime() - passedDate.getTime()) / (1000 * 3600 * 24);
-  return days;
 }
 
 
