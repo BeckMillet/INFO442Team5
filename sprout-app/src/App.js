@@ -6,6 +6,23 @@ import firebase from '../node_modules/firebase';
 import { Card, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
 class App extends Component{
+  componentDidMount(){
+    this.setState({
+      dailyBudget: 0
+    })
+    this.setState({
+      budgetSummary: 0
+    })
+    this.setState({
+      changeDailyBudget: 0
+    })
+    this.setState({
+      enterTransaction: 0
+    })
+    this.setState({
+      Date: 0
+    })
+  }
 
 }
 
