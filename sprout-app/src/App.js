@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseAuth';
+import firebase from '../node_modules/firebase';
+import { Card, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+
+}
+
+class SproutView extends Component{
+  dailyBudget = () => {
+  }
+
+  budgetSummary = () => {
+  }
+
+  changeDailyBudget = () => {
+  }
+
+  enterTransaction = () => {
+  }
+}
+
+class SproutModel extends Component{
+
+
+}
+
+class SproutController extends Component{
+
 }
 
 export default App;
