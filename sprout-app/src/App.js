@@ -22,6 +22,9 @@ class App extends Component{
     this.setState({
       Date: 0
     })
+    this.setState({
+      latestTransaction: 0
+    })
   }
 
 }
@@ -37,6 +40,9 @@ class SproutView extends Component{
   }
 
   enterTransaction = () => {
+  }
+  
+  latestTransaction = () => {
   }
 }
 
