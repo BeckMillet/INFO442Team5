@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+
 import './App.css';
+import Main from './Main'
+
 import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseAuth';
 import firebase from '../node_modules/firebase';
-import { Card, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import 'firebase/database';
 
 //test data
-import SAMPLE_TRANSACTIONS from './testData.json'; //a sample list of dogs (model)
+import SAMPLE_TRANSACTIONS from './testData.json';
 
 class App extends Component {
   constructor(props) {
@@ -13,12 +16,6 @@ class App extends Component {
     this.state = {
       user: null,
       loading: true,
-      lastDateChanged: '',
-      lastDateOpened: '',
-      dailyBudget: '',
-      budgetToDate: '',
-      expensesToDate: '',
-      transactions: []
     };
   }
 
@@ -40,8 +37,18 @@ class App extends Component {
       this.setState({ user: firebaseUser });
     })
 
+    /* let currentUser = this.state.user.displayName;
+    let userRef = firebase.database().ref(currentUser);
+
+    let lastDateOpenedRef = userRef.child('lastDateOpened');
+    let dailyBudgetRef = userRef.child('dailyBudget');
+    let budgetToDateRef = userRef.child('budgetToDate');
+    let expensesToDateRef = userRef.child('expensesToDate');
+    let transactionsRef = userRef.child('transactions');
+     */
+
     /* TODO delete sample data */
-    this.setState({
+    /* this.setState({
       transactions: SAMPLE_TRANSACTIONS.transactions
     })
     this.setState({
@@ -60,7 +67,7 @@ class App extends Component {
 
     this.setState({
       lastDateOpened: new Date('4/23/2020')
-    })
+    }) */
 
   }
 
@@ -71,61 +78,41 @@ class App extends Component {
   }
 
 
-  addTransToApp = (entry) => {
-    let transactions = this.state.transactions
-    transactions.push(entry);
 
-    /* Requirement 10 */
-    let sorted = transactions.sort((a, b) => {
-      return Date.parse(b.date) - Date.parse(a.date);
-    });
-    let id = 1;
-    for (let entry of sorted) {
-      entry.id = id;
-      id++;
-    }
-    this.setState({
-      transactions: sorted
-    });
-    /* updates expenses to date */
-    let expensesToDate = this.state.expensesToDate + entry.amountSpent;
-    this.setState({
-      expensesToDate: expensesToDate
-    });
-  }
+  handleNewUser = () => {
+    let currentUser = this.state.user.displayName;
+    let userRef = firebase.database().ref(currentUser);
 
-  handleBudgetChange = (updates) => {
-    this.setState({
-      lastDateChanged: updates.lastDateChanged
-    })
-    this.setState({
-      dailyBudget: updates.dailyBudget
-    })
-  }
+    let lastDateOpenedRef = userRef.child('lastDateOpened');
+    let dailyBudgetRef = userRef.child('dailyBudget');
+    let budgetToDateRef = userRef.child('budgetToDate');
+    let expensesToDateRef = userRef.child('expensesToDate');
+    let transactionsRef = userRef.child('transactions');
 
-  calcBudgetToDate = () => {
     let today = new Date();
-    let lastOpened = new Date(this.state.lastDateOpened);
+    today = today.toLocaleDateString()
 
-    if (lastOpened.toLocaleDateString() !== today.toLocaleDateString()) {
 
-      /* caluculate days that have passed. I know its ugly. I hate it */
-      lastOpened = Date.UTC(lastOpened.getFullYear(), lastOpened.getMonth(), lastOpened.getDate());
-      let present = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
-      let oneDay = 1000 * 60 * 60 * 24;
-      let days = ((present -oneDay) - lastOpened) / oneDay;
-
-      /* calculates amount to add to budget to date */
-      let val = this.state.budgetToDate + days * this.state.dailyBudget
-      this.setState({
-        budgetToDate: val
-      })
-
-      this.setState({
-        lastDateOpened: today.toLocaleDateString()
-      })
-    
-    }
+    userRef.once("value", snapshot => {
+      if (!snapshot.exists()) {
+        //constructs the schema for new users
+        lastDateOpenedRef.set(today)
+        dailyBudgetRef.set(0)
+        transactionsRef.push(
+          {
+            "amountSpent": 0,
+            "itemName": "Sample Transaction!",
+            "date": today
+          })
+        budgetToDateRef.set(0)
+        expensesToDateRef.set(0)
+        //future iterations will allow users to create and modify a 'tag' list for categorization. Sample below
+        /* let defaultTagList = ["food", "fitness", "social", "hobbies", "gas", "parking"]
+        tagListRef.set(defaultTagList) */
+      }
+      else {
+      }
+    });
 
   }
 
@@ -147,31 +134,10 @@ class App extends Component {
         </div>
       );
     } else {
-      this.calcBudgetToDate()
+      this.handleNewUser()
       content = (
-
         <div>
-          {/* Beginning of main page */}
-
-          <Summary
-            lastDateChanged={this.state.lastDateChanged}
-            dailyBudget={this.state.dailyBudget}
-            budgetToDate={this.state.budgetToDate}
-            expensesToDate={this.state.expensesToDate}
-            handleBudgetChange={this.handleBudgetChange}
-          />
-          {/* Beginning of Entry Form */}
-          <EntryForm
-            addTransToApp={this.addTransToApp}
-          />
-          {/* End of Entry Form */}
-
-          {/* Beginning of history */}
-
-          {<HistoryCards
-            transactions={this.state.transactions} />}
-
-          {/* End of main page */}
+          <Main currentUser={this.state.user} />
           <button className="btn btn-warning" onClick={this.handleSignOut}>
             Log Out {this.state.user.displayName}
           </button>
@@ -183,185 +149,7 @@ class App extends Component {
 
 }
 
-class Summary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      updateDailyBudget: '',
-    };
-    this.fieldChange = this.fieldChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
 
-
-  fieldChange(elem) {
-    const newState = {};
-    newState[elem.currentTarget.name] = elem.currentTarget.value;
-    this.setState(newState);
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    
-    let newDateChanged = new Date();
-    this.props.handleBudgetChange({
-      lastDateChanged: newDateChanged.toLocaleDateString(),
-      dailyBudget: Number(this.state.updateDailyBudget)
-    })
-
-    /* resets the form content */
-    this.setState({
-      updateDailyBudget: '',
-    })
-
-  }
-
-
-  render() {
-    let rollover = this.props.budgetToDate + this.props.dailyBudget - this.props.expensesToDate;
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit} noValidate>
-          <div>
-            <input className="form-control"
-              type="number"
-              name="updateDailyBudget"
-              placeholder='change daily budget'
-              required
-              /* TODO require positive non-zero numbers */
-              value={this.state.updateDailyBudget}
-              onChange={this.fieldChange} />
-          </div>
-
-
-          {/* button */}
-          <button type="submit" className="btn">Update!</button>
-
-        </form>
-
-        <div>
-          <Card>
-            <CardTitle>Rollover is:  {rollover} </CardTitle>
-            <CardSubtitle>Your daily budget is: {this.props.dailyBudget} </CardSubtitle>
-            <CardText> Your budget to date is: {(this.props.budgetToDate + this.props.dailyBudget)}</CardText>
-          </Card>
-        </div>
-      </div>
-    )
-  }
-}
-
-class EntryForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      entryAmount: '',
-      entryDate: '',
-      entryName: ''
-    };
-    this.fieldChange = this.fieldChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  fieldChange(elem) {
-    const newState = {};
-    newState[elem.currentTarget.name] = elem.currentTarget.value;
-    this.setState(newState);
-  }
-
-  handleSubmit = (event) => {
-
-    event.preventDefault();
-    let formDate = this.state.entryDate;
-    if (formDate === '') {
-      /* requirement 9 */
-      formDate = new Date();
-    } else {
-      /* requirement 8 */
-      formDate = new Date(formDate);
-    };
-    this.props.addTransToApp({
-      amountSpent: this.state.entryAmount,
-      date: formDate.toLocaleDateString(),
-      itemName: this.state.entryName
-    })
-
-    /* resets the form content */
-    this.setState({
-      entryAmount: '',
-      entryName: '',
-      entryDate: '',
-    })
-
-  }
-
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit} noValidate>
-          <div>
-
-            {/* FormFields */}
-            <div className='card'>
-              <div>
-                <input className="form-control"
-                  type="number"
-                  name="entryAmount"
-                  placeholder="Amount*"
-                  required
-                  /* TODO require positive non-zero numbers */
-                  value={this.state.entryAmount}
-                  onChange={this.fieldChange} />
-              </div>
-              <div>
-                <input className="form-control"
-                  type="text"
-                  name="entryName"
-                  placeholder="Item name"
-                  /* TODO add a maximimum length */
-                  value={this.state.entryName}
-                  onChange={this.fieldChange} />
-              </div>
-              <div>
-                <input className="form-control"
-                  type="date"
-                  name="entryDate"
-                  placeholder=""
-                  /* TDO how to signal that this autofills if empty? */
-                  value={this.state.entryDate}
-                  onChange={this.fieldChange} />
-              </div>
-            </div>
-
-          </div>
-
-          {/* FormSubmit */}
-          <button type="submit" className="btn">Submit!</button>
-
-        </form>
-      </div>)
-  }
-}
-
-class HistoryCards extends Component {
-  render() {
-    let transactions = this.props.transactions
-    let renderedEntries = transactions.map((eachEntry) => {
-      /* TODO fix each child should have a unique key*/
-      return (
-        <div>
-          <Card>
-            <CardTitle> {eachEntry.amountSpent} </CardTitle>
-            <CardSubtitle> {eachEntry.date} </CardSubtitle>
-            <CardText>{eachEntry.itemName} </CardText>
-          </Card>
-        </div>
-
-      )
-    });
-    return renderedEntries
-  }
-}
 
 
 export default App;
