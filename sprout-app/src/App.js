@@ -58,6 +58,9 @@ class SproutController extends Component{
   handleEntryFormSubmit = () => {
   }
   
+  calcBudgetToDate = () => {
+  }
+  
 }
 
 export default App;
