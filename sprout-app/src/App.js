@@ -52,6 +52,7 @@ class SproutModel extends Component{
 }
 
 class SproutController extends Component{
+  
   updateDailyBudget = () => {
   }
   
@@ -61,6 +62,8 @@ class SproutController extends Component{
   calcBudgetToDate = () => {
   }
   
+  updateExpensesToDate = () => {
+  }
 }
 
 export default App;
