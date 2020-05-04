@@ -2,11 +2,11 @@
 ## Coordination
 PM will coordinate meetings. CEO will coordinate development work. 
 
-Biweekly Meeting Schedule
+**Biweekly Meeting Schedule**
 - Monday: Demo and debugging.
 - Wednesday: Divide work and work on product development.
 
-Meeting Agenda:
+**Meeting Agenda:**
 - PM publishes the meeting agenda in advance and takes notes during team activities.
 - Stand-up for individuals to update the team on their task progression, ask questions, and notify roadblock concerns. 
 - Prepare for the upcoming week by reviewing incomplete issues and deadlines.
@@ -14,11 +14,11 @@ Meeting Agenda:
 - PM adds action items as issues on Github and assigns team members to relevant tasks. 
 
 ## Communication
-Slack: General questions, update on workflow, and sharing of resources. 
+**Slack:** General questions, update on workflow, and sharing of resources. 
 
-Github: Access to project files and issues for progress tracking. 
+**Github:** Access to project files and issues for progress tracking. 
 
-Google Team Drive: Access to meeting notes, homework files, and lab activities.
+**Google Team Drive:** Access to meeting notes, homework files, and lab activities.
 
 ## Ownership
 | Front-End Design      |                                                   |
