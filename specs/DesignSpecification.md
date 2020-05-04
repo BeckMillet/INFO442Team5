@@ -6,10 +6,6 @@ Ask any person if they feel like they have enough money, and there is a good cha
 We envision an entry form in which users can quickly and manually add transactions including the amount spent, date of transaction, and item name. For the onboarding process, user will enter their daily budget goal into the goal text field. Each successive entry will be totaled. The “status” of the system(how much money you have left to spend) is the budget to date minus the total expenses entered. Successive days will transition their budget status from the previous day into an "overall balance", continuously accumulating leftover budget room or overages in the budget. As the form and representations will be text-oriented, the interface will aim to be straightforward and simplistic. The “status” visualization is what will prompt user behavior, and will be located at the top of the screen, followed right below by the entry form. Between viewing statuses and entering transactions, the design is all captured under one screen.
 
 
-![](../designImages/LOGIN.png)
-
-The interface is simple. Users will be prompted to login and provide their credentials.
-
 ![](../designImages/MAIN_3.png)
 
 Users will be able to see their daily budget, their transactions, and whether or not they are being consistent with their budgeting goals on the single screen.
