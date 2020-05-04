@@ -44,7 +44,7 @@
 - **Verification:** Visually confirm the required text fields are ‘amount spent’ and “item name”. Add a console.log(state) line in the Main render function. Conduct multiple attempts to submit the entry form in a running version of the app. Each attempt should test the required nature of each field and each combination(allows no date, requires both amount spent and item name). 
 
 12. The text field labeled ‘amount spent’ will be limited to positive, non-zero numbers.
-- **Verification: Visually confirm that we are not able to type in any other character input besides numeric/float . Visually confirm an error message is thrown should the constraints of the textboxes be breached.**
+- **Verification:** Visually confirm that we are not able to type in any other character input besides numeric/float . Visually confirm an error message is thrown should the constraints of the textboxes be breached.**
 
 13. The program will use a react date picker component to ensure the user inputs valid dates. The program will then store the input using the Date object native to javascript.
 - **Verification:** The user will be able to interact with the pop out calendar by choosing the date that aligns with their transaction. Conduct a code review to confirm that the date field has a type=”date”. 
