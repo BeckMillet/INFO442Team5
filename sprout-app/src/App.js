@@ -52,7 +52,12 @@ class SproutModel extends Component{
 }
 
 class SproutController extends Component{
-
+  updateDailyBudget = () => {
+  }
+  
+  handleEntryFormSubmit = () => {
+  }
+  
 }
 
 export default App;
