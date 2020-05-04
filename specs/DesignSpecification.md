@@ -15,6 +15,7 @@ Users will be able to see their daily budget, their transactions, and whether or
 On the top of the screen, users will have a brief summary of their expenses. "Daily Budget" refers to how much money they have spent out of how much they want to spend today. "Overall Balance" is a culmination of the user's expenses and compares it to their overall budget. It answers the question whether has the user been consistently meeting his or her goals every day, and by how much.
 
 ![](../designImages/MAIN_4.png)
+
 Users may adjust their daily budget goal by interacting with the text field.
 
 ![](../designImages/MAIN_2.png)
