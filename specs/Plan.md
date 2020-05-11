@@ -14,13 +14,14 @@ PM will coordinate meetings. CEO will coordinate development work.
 - PM adds action items as issues on Github and assigns team members to relevant tasks. 
 
 ## Communication
-**Slack:** General questions, update on workflow, and sharing of resources. 
+**Slack:** General questions, update on workflow, and sharing of resources. Possible alternatives included Facebook Messaging, Skype, and Discord, but we felt that the class integration of Slack, our easiness working with the platform from previous experiences, and its compatabilities with Zoom (/Zoom to start meeting) and GIFs make it the best and most straightforward option.
 
 **Github:** Access to project files and issues for progress tracking. 
 
 **Google Team Drive:** Access to meeting notes, homework files, and lab activities.
 
 ## Ownership
+We decided to split up the workflow based on each member's role and familiarity with implementing the components. This process allowed our members to be mindful and accountable of the parts that they have control over.
 | Front-End Design      |                                                   |
 |-----------------------|---------------------------------------------------|
 | Kevin                 | Enter Transaction View  Latest Transaction View   |
