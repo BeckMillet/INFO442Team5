@@ -39,9 +39,12 @@ export default class Summary extends Component {
   
   
     render() {
-      let rollover = Number(this.props.budgetToDate) + Number(this.props.dailyBudget) - Number(this.props.expensesToDate);
+      let overallBalance = Number(this.props.budgetToDate) + Number(this.props.dailyBudget) - Number(this.props.expensesToDate);
       return (
-        <div>
+        <div className="">
+          <div>
+            Summary Section
+          </div>
           <form onSubmit={this.handleSubmit} noValidate>
             <div>
               <input className="form-control"
@@ -62,7 +65,7 @@ export default class Summary extends Component {
   
           <div>
             <Card>
-              <CardTitle>Rollover is:  {rollover} </CardTitle>
+              <CardTitle>Overall Balance is:  {overallBalance} </CardTitle>
               <CardSubtitle>Your daily budget is: {this.props.dailyBudget} </CardSubtitle>
               <CardText> Your budget to date is: {(this.props.budgetToDate + this.props.dailyBudget)}</CardText>
             </Card>

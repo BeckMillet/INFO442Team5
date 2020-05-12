@@ -21,6 +21,11 @@ export default class HistoryCards extends Component {
   
         )
       });
-      return renderedEntries
+      return (
+        <div>
+          History Section
+        {renderedEntries}
+        </div>
+      )
     }
   }
