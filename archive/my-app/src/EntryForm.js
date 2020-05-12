@@ -28,7 +28,6 @@ export default class EntryForm extends Component {
       entryAmount: '',
       amountError: "",
       entryDate: '',
-      dateError: "",
       entryName: '',
       nameError: ""
     };
@@ -46,17 +45,23 @@ export default class EntryForm extends Component {
     let isError = false;
     let errors = {}
 
-    if(this.state.entryAmount < .01){
+    if (this.state.entryAmount < .01) {
       isError = true;
       errors.amountError = 'Must be positive and non-zero'
+    } else {
+      isError = false;
+      errors.amountError = ''
     }
 
-    if(this.state.entryName === ""){
+    if (this.state.entryName === "") {
       isError = true;
       errors.nameError = 'Required!'
+    } else {
+      isError = false;
+      errors.nameError = ''
     }
 
-    if(isError){
+    if (isError) {
       this.setState({
         ...this.state,
         ...errors
@@ -77,6 +82,7 @@ export default class EntryForm extends Component {
         formDate = new Date();
       } else {
         /* requirement 8 */
+        formDate = formDate.substring(5, 10) + "-" + formDate.substring(0,4)
         formDate = new Date(formDate);
       };
       this.props.addTransToApp({
@@ -90,6 +96,8 @@ export default class EntryForm extends Component {
         entryAmount: '',
         entryName: '',
         entryDate: '',
+        amountError: "",
+        nameError: ""
       })
     }
   }
@@ -117,41 +125,33 @@ export default class EntryForm extends Component {
 
   render() {
     let today = this.getToday()
-    console.log(this.state)
-    return (
-      <div>
-        Entry Form Section
-        <form onSubmit={this.handleSubmit} classname="" noValidate>
+    let content;
 
-          {/* FormFields */}
-
-
-          {/* <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel> */}
+    if (this.props.dailyBudget != 0) {
+      content = (
+        <form onSubmit={this.handleSubmit} className="" noValidate>
           <TextField
             name="entryAmount"
-            id="outlined-error-helper-text"
+            id="standard-required"
             value={this.state.entryAmount}
-            error ={this.state.amountError.length === 0 ? false : true }
+            error={this.state.amountError.length === 0 ? false : true}
             helperText={this.state.amountError}
             onChange={this.fieldChange}
             placeholder="Amount Spent*"
-            /* TODO require positive non-zero numbers */
           />
 
-          {/*  <InputLabel>Item Name</InputLabel> */}
           <TextField
             required
             id="standard-required entryFormItemName"
             name="entryName"
-            label="Item Name"
+            value={this.state.entryName}
+            placeholder="Item Name"
             onChange={this.fieldChange}
             type="text"
-            error ={this.state.nameError.length === 0 ? false : true }
+            error={this.state.nameError.length === 0 ? false : true}
             helperText={this.state.nameError}
             required
           />
-
-
 
           <TextField
             id="entryFormDate"
@@ -164,13 +164,20 @@ export default class EntryForm extends Component {
               shrink: true,
             }}
           />
-
-
-
           <Button type="submit" className="btn">Submit!</Button>
         </form>
-        {/* FormSubmit */}
-
+      )
+    } else{
+      content = (
+      <div>
+        To get started, add your daily budget in the form above!
+      </div>
+      )
+    }
+    return (
+      <div>
+        Entry Form Section
+        {content}
       </div>
     )
   }

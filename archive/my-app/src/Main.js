@@ -195,6 +195,7 @@ export default class Main extends Component {
                 {/* Beginning of Entry Form */}
                 <EntryForm
                     addTransToApp={this.addTransToApp}
+                    dailyBudget={this.state.dailyBudget}
                 />
                 {/* End of Entry Form */}
 

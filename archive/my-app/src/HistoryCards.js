@@ -6,6 +6,13 @@ import 'firebase/database';
 
 
 export default class HistoryCards extends Component {
+  formatAmountSpent = (amountSpent) => {
+    amountSpent = Number(amountSpent).toFixed(2)
+    amountSpent = "$" + amountSpent
+
+    return amountSpent
+  }
+
     render() {
       let transactions = this.props.transactions
       let renderedEntries = transactions.map((eachEntry) => {
@@ -13,7 +20,7 @@ export default class HistoryCards extends Component {
         return (
           <div>
             <Card>
-              <CardTitle> {eachEntry.amountSpent} </CardTitle>
+              <CardTitle> {this.formatAmountSpent(eachEntry.amountSpent)} </CardTitle>
               <CardSubtitle> {eachEntry.date} </CardSubtitle>
               <CardText>{eachEntry.itemName} </CardText>
             </Card>
