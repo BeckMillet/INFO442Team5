@@ -24,7 +24,6 @@ export default class HistoryCards extends Component {
               <CardText>{eachEntry.itemName} </CardText>
             </Card>
           </div>
-  
         )
       });
       return (
