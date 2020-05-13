@@ -4,8 +4,6 @@ import './App.css';
 import Summary from './Summary'
 import EntryForm from './EntryForm'
 import HistoryCards from './HistoryCards'
-
-import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseAuth';
 import firebase from '../node_modules/firebase';
 import 'firebase/database';
 

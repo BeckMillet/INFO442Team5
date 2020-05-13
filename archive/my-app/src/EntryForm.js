@@ -1,25 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
-import {
-  DatePicker,
-  TimePicker,
-  DateTimePicker,
-  MuiPickersUtilsProvider,
-  validate,
-} from '@material-ui/pickers';
-
-
-import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
-
-
 
 export default class EntryForm extends Component {
   constructor(props) {
@@ -127,7 +109,7 @@ export default class EntryForm extends Component {
     let today = this.getToday()
     let content;
 
-    if (this.props.dailyBudget != 0) {
+    if (this.props.dailyBudget !== 0) {
       content = (
         <form onSubmit={this.handleSubmit} className="" noValidate>
           <TextField
@@ -150,7 +132,6 @@ export default class EntryForm extends Component {
             type="text"
             error={this.state.nameError.length === 0 ? false : true}
             helperText={this.state.nameError}
-            required
           />
 
           <TextField

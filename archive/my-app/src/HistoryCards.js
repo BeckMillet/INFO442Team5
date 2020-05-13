@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import firebase from '../node_modules/firebase';
 import { Card, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import 'firebase/database';
 

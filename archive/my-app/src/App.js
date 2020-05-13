@@ -7,8 +7,6 @@ import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseA
 import firebase from '../node_modules/firebase';
 import 'firebase/database';
 
-//test data
-import SAMPLE_TRANSACTIONS from './testData.json';
 
 class App extends Component {
   constructor(props) {

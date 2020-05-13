@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import firebase from '../node_modules/firebase';
 import { Card, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import 'firebase/database';
 import TextField from '@material-ui/core/TextField';
@@ -70,7 +69,7 @@ export default class Summary extends Component {
     if(this.props.dailyBudget === 0){
       button = (<Button type="submit" className="btn primary">Add your daily budget</Button>)
     }
-    if (this.state.updateDailyBudget != '' & this.props.dailyBudget != 0){
+    if (this.state.updateDailyBudget !== '' & this.props.dailyBudget !== 0){
       button = (<Button type="submit" className="btn">Update!</Button>)
     }
 
