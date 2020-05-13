@@ -2,3 +2,20 @@
     background-color: #2A8D64;
 }
 
+.date {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.budget{
+    background-color: #2A8D64;
+    color: white;
+    text-align: center;
+}
+.balance{
+    background-color: #2A8D64;
+    color: white;
+    text-align: center;
+}
+

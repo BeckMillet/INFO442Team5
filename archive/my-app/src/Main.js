@@ -6,7 +6,6 @@ import EntryForm from './EntryForm'
 import HistoryCards from './HistoryCards'
 import firebase from '../node_modules/firebase';
 import 'firebase/database';
-import { Jumbotron } from 'reactstrap';
 
 export default class Main extends Component {
     constructor(props) {
@@ -181,8 +180,7 @@ export default class Main extends Component {
         //this.calcBudgetToDate()
         let content = (
             <div>
-                {/* Beginning of main page */}
-                <Jumbotron className = 'testcss'>   
+                {/* Beginning of main page */}  
                     <Summary
                         lastDateChanged={this.state.lastDateChanged}
                         dailyBudget={this.state.dailyBudget}
@@ -190,8 +188,7 @@ export default class Main extends Component {
                         expensesToDate={this.state.expensesToDate}
                         handleBudgetChange={this.handleBudgetChange}
                     /* calcBudgetToDate={this.calcBudgetToDate} */
-                    />
-                </Jumbotron> 
+                    /> 
                 {/* Beginning of Entry Form */}
                 <EntryForm
                     addTransToApp={this.addTransToApp}

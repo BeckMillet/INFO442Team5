@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Card, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardTitle, Row, Col, Jumbotron} from 'reactstrap';
 import 'firebase/database';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -81,10 +81,27 @@ export default class Summary extends Component {
     let overallBalance = Number(this.props.budgetToDate) + Number(this.props.dailyBudget) - Number(this.props.expensesToDate);
 
     return (
-      <div className="">
-        <div>
-          Summary Section
+      <div>
+        
+        <Jumbotron>
+          <div className="date">
+            Date object here please
           </div>
+ 
+          <Row>
+            <Col>
+              <Card body className = 'budget'>
+                <CardTitle>Daily Budget: {this.props.dailyBudget} </CardTitle>
+              </Card>
+            </Col>
+            <Col>
+              <Card body className = 'balance'>
+                <CardTitle>Overall Balance: {overallBalance} </CardTitle>
+              </Card>
+            </Col>
+          </Row>
+        </Jumbotron> 
+
         <form onSubmit={this.handleSubmit} noValidate>
           <TextField
             className=""
@@ -96,20 +113,10 @@ export default class Summary extends Component {
             helperText={this.state.dailyBudgetError}
             value={this.state.updateDailyBudget}
             onChange={this.fieldChange} />
-
-          {/* button */}
-          
+          {/* button */} 
           {this.showHideButton()}
-
         </form>
 
-        <div>
-          <Card>
-            <CardTitle>Overall Balance is:  {overallBalance} </CardTitle>
-            <CardSubtitle>Your daily budget is: {this.props.dailyBudget} </CardSubtitle>
-            <CardText> Your budget to date is: {(this.props.budgetToDate + this.props.dailyBudget)}</CardText>
-          </Card>
-        </div>
       </div>
     )
   }
