@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import CurrencyTextField from '@unicef/material-ui-currency-textfield'
 
 export default class EntryForm extends Component {
   constructor(props) {
@@ -64,7 +65,7 @@ export default class EntryForm extends Component {
         formDate = new Date();
       } else {
         /* requirement 8 */
-        formDate = formDate.substring(5, 10) + "-" + formDate.substring(0,4)
+        formDate = formDate.substring(5, 10) + "-" + formDate.substring(0, 4)
         formDate = new Date(formDate);
       };
       this.props.addTransToApp({
@@ -112,9 +113,12 @@ export default class EntryForm extends Component {
     if (this.props.dailyBudget !== 0) {
       content = (
         <form onSubmit={this.handleSubmit} className="" noValidate>
-          <TextField
+          <CurrencyTextField
             name="entryAmount"
             id="standard-required"
+            currencySymbol="$"
+            decimalCharacter="."
+            digitGroupSeparator=","
             value={this.state.entryAmount}
             error={this.state.amountError.length === 0 ? false : true}
             helperText={this.state.amountError}
@@ -148,11 +152,11 @@ export default class EntryForm extends Component {
           <Button type="submit" className="btn">Submit!</Button>
         </form>
       )
-    } else{
+    } else {
       content = (
-      <div>
-        To get started, add your daily budget in the form above!
-      </div>
+        <div>
+          To get started, add your daily budget in the form above!
+        </div>
       )
     }
     return (

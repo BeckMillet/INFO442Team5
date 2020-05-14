@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Card, CardTitle, Row, Col, Jumbotron} from 'reactstrap';
+import { Card, CardTitle, Row, Col, Jumbotron } from 'reactstrap';
 import 'firebase/database';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -66,56 +66,58 @@ export default class Summary extends Component {
 
   showHideButton = () => {
     let button;
-    if(this.props.dailyBudget === 0){
+    if (this.props.dailyBudget === 0) {
       button = (<Button type="submit" className="btn primary">Add your daily budget</Button>)
     }
-    if (this.state.updateDailyBudget !== '' & this.props.dailyBudget !== 0){
+    if (this.state.updateDailyBudget !== '' & this.props.dailyBudget !== 0) {
       button = (<Button type="submit" className="btn">Update!</Button>)
     }
 
-  return button
+    return button
   }
 
 
   render() {
     let overallBalance = Number(this.props.budgetToDate) + Number(this.props.dailyBudget) - Number(this.props.expensesToDate);
+    let today = new Date();
+    today = today.toLocaleDateString()
 
     return (
       <div>
-        
+
         <Jumbotron>
           <div className="date">
-            Date object here please
+            {today}
           </div>
- 
-          <Row>
-            <Col>
-              <Card body className = 'budget'>
-                <CardTitle>Daily Budget: {this.props.dailyBudget} </CardTitle>
-              </Card>
-            </Col>
-            <Col>
-              <Card body className = 'balance'>
-                <CardTitle>Overall Balance: {overallBalance} </CardTitle>
-              </Card>
-            </Col>
-          </Row>
-        </Jumbotron> 
+          <form onSubmit={this.handleSubmit} noValidate>
+            <Row>
+              <Col>
+                <Card body className='budget'>
+                  <CardTitle>Daily Budget:
+                    <TextField
+                      className=""
+                      type="number"
+                      name="updateDailyBudget"
+                      placeholder={this.props.dailyBudget.toString()}
+                      required
+                      error={this.state.dailyBudgetError.length === 0 ? false : true}
+                      helperText={this.state.dailyBudgetError}
+                      value={this.state.updateDailyBudget}
+                      onChange={this.fieldChange} />
+                  </CardTitle>
+                </Card>
+              </Col>
+              <Col>
+                <Card body className='balance'>
+                  <CardTitle>Overall Balance: {overallBalance} </CardTitle>
+                </Card>
+              </Col>
+            </Row>
+            {this.showHideButton()}
+          </form>
+        </Jumbotron>
 
-        <form onSubmit={this.handleSubmit} noValidate>
-          <TextField
-            className=""
-            type="number"
-            name="updateDailyBudget"
-            placeholder={this.props.dailyBudget.toString()}
-            required
-            error={this.state.dailyBudgetError.length === 0 ? false : true}
-            helperText={this.state.dailyBudgetError}
-            value={this.state.updateDailyBudget}
-            onChange={this.fieldChange} />
-          {/* button */} 
-          {this.showHideButton()}
-        </form>
+
 
       </div>
     )
