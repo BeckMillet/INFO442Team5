@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Card, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardTitle, CardSubtitle, CardText, Row, Col, Container } from 'reactstrap';
 import 'firebase/database';
 
 
@@ -18,18 +18,26 @@ export default class HistoryCards extends Component {
         /* TODO fix each child should have a unique key*/
         return (
           <div>
-            <Card>
-              <CardTitle> {this.formatAmountSpent(eachEntry.amountSpent)} </CardTitle>
-              <CardSubtitle> {eachEntry.date} </CardSubtitle>
-              <CardText>{eachEntry.itemName} </CardText>
+            <Row>
+            {/* offset wont create distance */}
+
+            <Col className = "cardcol" sm="12" md={{ size: 6, offset: 5 }}>
+            <Card className="history">
+            <CardText>{eachEntry.itemName} </CardText>
+            <CardSubtitle> {eachEntry.date} </CardSubtitle>
+            <CardTitle> {this.formatAmountSpent(eachEntry.amountSpent)} </CardTitle>
             </Card>
+            </Col>
+            </Row>
           </div>
         )
       });
       return (
         <div>
-          History Section
+          <div className="activityBanner">LATEST ACTIVITY</div>
+        <Container className="historyContainer">
         {renderedEntries}
+        </Container>
         </div>
       )
     }

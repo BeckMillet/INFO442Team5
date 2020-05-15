@@ -7,6 +7,7 @@ import HistoryCards from './HistoryCards'
 import firebase from '../node_modules/firebase';
 import 'firebase/database';
 
+
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -198,9 +199,12 @@ export default class Main extends Component {
 
                 {/* Beginning of history */}
 
+            
+               
                 {<HistoryCards
                     transactions={this.state.transactions} />}
-
+                    
+               
                 {/* End of main page */}
 
             </div>

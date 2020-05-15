@@ -3,6 +3,7 @@ import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CurrencyTextField from '@unicef/material-ui-currency-textfield'
+import { Container } from 'reactstrap';
 
 export default class EntryForm extends Component {
   constructor(props) {
@@ -161,8 +162,12 @@ export default class EntryForm extends Component {
     }
     return (
       <div>
-        Entry Form Section
+      <div className="transactionBanner">
+        ENTER TRANSACTION
+        </div>
+        <Container>
         {content}
+        </Container>
       </div>
     )
   }
