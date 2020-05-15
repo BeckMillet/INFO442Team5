@@ -23,9 +23,11 @@ export default class HistoryCards extends Component {
 
             <Col className = "cardcol" sm="12" md={{ size: 6, offset: 5 }}>
             <Card className="history">
-            <CardText>{eachEntry.itemName} </CardText>
+            
+
+            <CardTitle className="cardTitle"> {eachEntry.itemName} </CardTitle>
             <CardSubtitle> {eachEntry.date} </CardSubtitle>
-            <CardTitle> {this.formatAmountSpent(eachEntry.amountSpent)} </CardTitle>
+            <CardText className="amount">{this.formatAmountSpent(eachEntry.amountSpent)} </CardText>
             </Card>
             </Col>
             </Row>
