@@ -114,19 +114,7 @@ export default class EntryForm extends Component {
     if (this.props.dailyBudget !== 0) {
       content = (
         <form onSubmit={this.handleSubmit} className="" noValidate>
-          <CurrencyTextField
-            name="entryAmount"
-            id="standard-required"
-            variant="outlined"
-            currencySymbol="$"
-            decimalCharacter="."
-            digitGroupSeparator=","
-            value={this.state.entryAmount}
-            error={this.state.amountError.length === 0 ? false : true}
-            helperText={this.state.amountError}
-            onChange={this.fieldChange}
-            placeholder="Amount Spent*"
-          />
+          
 
           <TextField
             required
@@ -139,6 +127,20 @@ export default class EntryForm extends Component {
             variant="outlined"
             error={this.state.nameError.length === 0 ? false : true}
             helperText={this.state.nameError}
+          />
+
+          <CurrencyTextField
+            name="entryAmount"
+            id="standard-required"
+            variant="outlined"
+            currencySymbol="$"
+            decimalCharacter="."
+            digitGroupSeparator=","
+            value={this.state.entryAmount}
+            error={this.state.amountError.length === 0 ? false : true}
+            helperText={this.state.amountError}
+            onChange={this.fieldChange}
+            placeholder="Amount"
           />
 
           <TextField
@@ -175,7 +177,7 @@ export default class EntryForm extends Component {
       <div className="transactionBanner">
         ENTER TRANSACTION
         </div>
-        <Container>
+        <Container className="form">
         {content}
         </Container>
       </div>

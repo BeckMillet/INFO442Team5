@@ -113,10 +113,10 @@ export default class Summary extends Component {
           <form onSubmit={this.handleSubmit} noValidate>
             <Row>
               <Col>
-                <Card body className='budget'>
+                <Card className='budget' >
                   <CardTitle>Daily Budget:
                     <TextField
-                      className=""
+                      className="budgetText"
                       type="number"
                       name="updateDailyBudget"
                       placeholder={this.props.dailyBudget.toString()}
