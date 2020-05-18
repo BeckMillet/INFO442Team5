@@ -117,6 +117,7 @@ export default class EntryForm extends Component {
           <CurrencyTextField
             name="entryAmount"
             id="standard-required"
+            variant="outlined"
             currencySymbol="$"
             decimalCharacter="."
             digitGroupSeparator=","
@@ -135,6 +136,7 @@ export default class EntryForm extends Component {
             placeholder="Item Name"
             onChange={this.fieldChange}
             type="text"
+            variant="outlined"
             error={this.state.nameError.length === 0 ? false : true}
             helperText={this.state.nameError}
           />
@@ -142,7 +144,8 @@ export default class EntryForm extends Component {
           <TextField
             id="entryFormDate"
             name="entryDate"
-            label="Birthday"
+            label=""
+            variant="outlined"
             onChange={this.fieldChange}
             type="date"
             defaultValue={today}
