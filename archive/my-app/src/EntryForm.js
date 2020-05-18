@@ -153,7 +153,12 @@ export default class EntryForm extends Component {
               shrink: true,
             }}
           />
-          <Button type="submit" className="btn">Submit!</Button>
+          <Button 
+            type="submit" 
+            variant="outlined" 
+            className="btn">
+              Submit!
+            </Button>
         </form>
       )
     } else {
