@@ -3,7 +3,7 @@ import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CurrencyTextField from '@unicef/material-ui-currency-textfield'
-import { Container } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 
 export default class EntryForm extends Component {
   constructor(props) {
@@ -153,12 +153,14 @@ export default class EntryForm extends Component {
               shrink: true,
             }}
           />
-          <Button 
-            type="submit" 
-            variant="outlined" 
-            className="btn">
-              Submit!
+          <Row className="submitbutton">
+            <Button 
+              type="submit" 
+              variant="outlined" 
+              className="btn">
+                Submit!
             </Button>
+          </Row>
         </form>
       )
     } else {
