@@ -18,7 +18,13 @@
     color: white;
     text-align: center;
 }
-.submitbutton {
+.submitbuttonrow {
     padding-left: 15px;
 }
-
+.submitbutton {
+    background-color: #E7815A !important;
+    color: white !important;
+}
+.logoutbuttonrow {
+    padding-left: 30px;
+}

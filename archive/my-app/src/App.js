@@ -6,6 +6,7 @@ import Main from './Main'
 import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseAuth';
 import firebase from '../node_modules/firebase';
 import 'firebase/database';
+import { Row } from 'reactstrap';
 
 
 class App extends Component {
@@ -136,9 +137,11 @@ class App extends Component {
       content = (
         <div>
           <Main currentUser={this.state.user} />
-          <button className="btn btn-warning" onClick={this.handleSignOut}>
-            Log Out {this.state.user.displayName}
-          </button>
+            <Row className="logoutbuttonrow">
+              <button className="btn btn-warning" onClick={this.handleSignOut}>
+                Log Out {this.state.user.displayName}
+              </button>
+            </Row>
         </div>
       )
     }

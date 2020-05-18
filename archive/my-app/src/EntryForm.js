@@ -153,11 +153,11 @@ export default class EntryForm extends Component {
               shrink: true,
             }}
           />
-          <Row className="submitbutton">
+          <Row className="submitbuttonrow">
             <Button 
               type="submit" 
               variant="outlined" 
-              className="btn">
+              className="submitbutton">
                 Submit!
             </Button>
           </Row>
