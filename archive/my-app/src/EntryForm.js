@@ -120,6 +120,7 @@ export default class EntryForm extends Component {
             required
             id="standard-required entryFormItemName"
             name="entryName"
+            className="itemform"
             value={this.state.entryName}
             placeholder="Item Name"
             onChange={this.fieldChange}
@@ -133,6 +134,7 @@ export default class EntryForm extends Component {
             name="entryAmount"
             id="standard-required"
             variant="outlined"
+            className="amountform"
             currencySymbol="$"
             decimalCharacter="."
             digitGroupSeparator=","
@@ -150,6 +152,7 @@ export default class EntryForm extends Component {
             variant="outlined"
             onChange={this.fieldChange}
             type="date"
+            className="dateform"
             defaultValue={today}
             InputLabelProps={{
               shrink: true,
