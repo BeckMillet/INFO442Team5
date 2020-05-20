@@ -5,6 +5,7 @@ import Summary from './Summary'
 import EntryForm from './EntryForm'
 import HistoryCards from './HistoryCards'
 import firebase from '../node_modules/firebase';
+
 import 'firebase/database';
 
 
@@ -179,9 +180,11 @@ export default class Main extends Component {
 
     render() {
         //this.calcBudgetToDate()
+        
         let content = (
             <div>
                 {/* Beginning of main page */}  
+               
                     <Summary
                         lastDateChanged={this.state.lastDateChanged}
                         dailyBudget={this.state.dailyBudget}
@@ -195,6 +198,7 @@ export default class Main extends Component {
                     addTransToApp={this.addTransToApp}
                     dailyBudget={this.state.dailyBudget}
                 />
+                
                 {/* End of Entry Form */}
 
                 {/* Beginning of history */}

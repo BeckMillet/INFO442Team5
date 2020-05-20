@@ -128,8 +128,10 @@ class App extends Component {
     } else if (!this.state.user) {
       content = (
         <div className="container">
-          <h1>Sign Up</h1>
-          <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
+          <h1>Sign In</h1>
+          <StyledFirebaseAuth 
+          uiConfig={this.uiConfig} 
+          firebaseAuth={firebase.auth()} />
         </div>
       );
     } else {

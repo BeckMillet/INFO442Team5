@@ -4,6 +4,8 @@ import { Card, CardTitle, Row, Col, Jumbotron } from 'reactstrap';
 import 'firebase/database';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 export default class Summary extends Component {
   constructor(props) {
@@ -51,9 +53,10 @@ export default class Summary extends Component {
     let err = this.validate();
     if (!err) {
       let newDateChanged = new Date();
+      let rounded = Number(this.state.updateDailyBudget).toFixed(2)
       this.props.handleBudgetChange({
         lastDateChanged: newDateChanged.toLocaleDateString(),
-        dailyBudget: Number(this.state.updateDailyBudget)
+        dailyBudget: rounded
       })
 
       /* resets the form content */
@@ -100,9 +103,6 @@ export default class Summary extends Component {
     let today = new Date();
     let month = this.calcMonthName()
     today = month[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear()
-
-    console.log(today)
-
     return (
       <div>
 
@@ -115,7 +115,7 @@ export default class Summary extends Component {
               <Col>
                 <Card className='budget' >
                   <CardTitle>Daily Budget:
-                    <TextField
+                     <TextField
                       className="budgetText"
                       type="number"
                       name="updateDailyBudget"
@@ -124,7 +124,15 @@ export default class Summary extends Component {
                       error={this.state.dailyBudgetError.length === 0 ? false : true}
                       helperText={this.state.dailyBudgetError}
                       value={this.state.updateDailyBudget}
-                      onChange={this.fieldChange} />
+                      onChange={this.fieldChange}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            $
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
                   </CardTitle>
                 </Card>
               </Col>

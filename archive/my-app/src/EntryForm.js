@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import CurrencyTextField from '@unicef/material-ui-currency-textfield'
 import { Container, Row } from 'reactstrap';
+
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 export default class EntryForm extends Component {
   constructor(props) {
@@ -130,19 +131,24 @@ export default class EntryForm extends Component {
             helperText={this.state.nameError}
           />
 
-          <CurrencyTextField
+          <TextField
             name="entryAmount"
             id="standard-required"
+            type="number"
             variant="outlined"
             className="amountform"
-            currencySymbol="$"
-            decimalCharacter="."
-            digitGroupSeparator=","
             value={this.state.entryAmount}
             error={this.state.amountError.length === 0 ? false : true}
             helperText={this.state.amountError}
             onChange={this.fieldChange}
             placeholder="Amount"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  $
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
