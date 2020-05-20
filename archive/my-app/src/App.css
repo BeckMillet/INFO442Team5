@@ -1,6 +1,6 @@
 .jumbotron {
     background-color: #2A8D64;
-    margin-bottom: 1rem;
+    margin-bottom: 5%;
 }
 
 .date {
@@ -24,7 +24,8 @@
 
 }
 .submitbuttonrow {
-    padding-left: 15px;
+    padding-left: 5%;
+    padding-top: 5%;
 }
 .submitbutton {
     background-color: #E7815A !important;
@@ -35,10 +36,25 @@
     padding-left: 30px;
 }
 
-.budgetText {
-    text-align: center;
+.form{
+    margin-bottom: 1rem;
 }
 
-form{
-    margin-bottom: 1rem;
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.card {
+    margin-top: 5%;
+}
+
+.historyContainer {
+    margin-bottom: 4%;
+}
+
+.MuiInputBase-root {
+    color: black !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
 }

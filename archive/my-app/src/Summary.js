@@ -116,7 +116,7 @@ export default class Summary extends Component {
                 <Card className='budget' >
                   <CardTitle>Daily Budget:
                      <TextField
-                      className="budgetText"
+                      className=""
                       type="number"
                       name="updateDailyBudget"
                       placeholder={this.props.dailyBudget.toString()}
@@ -127,7 +127,7 @@ export default class Summary extends Component {
                       onChange={this.fieldChange}
                       InputProps={{
                         startAdornment: (
-                          <InputAdornment position="start">
+                          <InputAdornment className="" position="start">
                             $
                           </InputAdornment>
                         ),
