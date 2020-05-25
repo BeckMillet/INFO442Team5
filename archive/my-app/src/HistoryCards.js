@@ -22,12 +22,15 @@ export default class HistoryCards extends Component {
             {/* offset wont create distance */}
 
             <Col className = "cardcol" sm="12" md={{ size: 6, offset: 5 }}>
-            <Card className="history">
+            <Card className="shadow-sm bg-white rounded history">   
+            <Row>
+            <CardTitle className="col-7 historytitle"> {eachEntry.itemName} </CardTitle>
+            <CardText className=" col-5 historyamount">{this.formatAmountSpent(eachEntry.amountSpent)} </CardText>
+            </Row>
+            <Col>
+            <CardSubtitle className="historydate"> {eachEntry.date} </CardSubtitle>
+            </Col>
             
-
-            <CardTitle className="cardTitle"> {eachEntry.itemName} </CardTitle>
-            <CardSubtitle> {eachEntry.date} </CardSubtitle>
-            <CardText className="amount">{this.formatAmountSpent(eachEntry.amountSpent)} </CardText>
             </Card>
             </Col>
             </Row>

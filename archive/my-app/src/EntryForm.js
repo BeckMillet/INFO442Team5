@@ -169,7 +169,7 @@ export default class EntryForm extends Component {
               type="submit" 
               variant="outlined" 
               className="submitbutton">
-                Submit!
+                Submit
             </Button>
           </Row>
         </form>

@@ -1,12 +1,13 @@
 .jumbotron {
     background-color: #2A8D64;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .date {
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
+    font-weight: bold;
 }
 
 .budget{
@@ -15,12 +16,14 @@
     text-align: center;
     border: none;
     padding-top: 1.25em;
+    padding-left: 1em;
 }
 .balance{
     background-color: #2A8D64;
     color: white;
     text-align: center;
     border: none;
+    padding: none;
 
 }
 .submitbuttonrow {

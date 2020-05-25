@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Card, CardTitle, Row, Col, Jumbotron } from 'reactstrap';
+import { Card, CardTitle, Row, Jumbotron, CardSubtitle } from 'reactstrap';
 import 'firebase/database';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
+// import PropTypes from "prop-types";
+// import { withStyles } from "@material-ui/core/styles";
+
+// const styles = {
+//   root: {
+//     background: "black"
+//   },
+//   input: {
+//     color: "white"
+//   }
+// };
 
 
 export default class Summary extends Component {
@@ -112,20 +123,23 @@ export default class Summary extends Component {
           </div>
           <form onSubmit={this.handleSubmit} noValidate>
             <Row>
-              <Col>
-                <Card className='budget' >
+              
+                <Card className='col-6 budget'>
                   <CardTitle>Daily Budget:
                      <TextField
-                      className=""
+                      className="updateDailyBudget"
                       type="number"
                       name="updateDailyBudget"
+                      // inputStyle={{ fontSize: '20em' }} 
                       placeholder={this.props.dailyBudget.toString()}
                       required
                       error={this.state.dailyBudgetError.length === 0 ? false : true}
                       helperText={this.state.dailyBudgetError}
                       value={this.state.updateDailyBudget}
                       onChange={this.fieldChange}
+                      
                       InputProps={{
+                        
                         startAdornment: (
                           <InputAdornment className="" position="start">
                             $
@@ -135,12 +149,13 @@ export default class Summary extends Component {
                     />
                   </CardTitle>
                 </Card>
-              </Col>
-              <Col>
-                <Card body className='balance'>
-                  <CardTitle>Overall Balance: {overallBalance} </CardTitle>
+           
+              
+                <Card body className='col-6 balance'>
+                  <CardTitle>Overall Balance:</CardTitle>
+                  <CardSubtitle>${overallBalance}</CardSubtitle>
                 </Card>
-              </Col>
+              
             </Row>
             {this.showHideButton()}
           </form>
