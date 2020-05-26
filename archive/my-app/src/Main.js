@@ -125,7 +125,13 @@ export default class Main extends Component {
     addTransToApp = (entry) => {
         let transactions = this.state.transactions
         transactions.unshift(entry);
+        let expensesToDate = Number(this.state.expensesToDate) + Number(entry.amountSpent);
 
+
+        this.updateFirebaseTrans(transactions, expensesToDate)
+    }
+
+    updateFirebaseTrans = (transactions, expensesToDate) => {
         /* Requirement 10 */
         let sorted = transactions.sort((a, b) => {
             return Date.parse(b.date) - Date.parse(a.date);
@@ -136,7 +142,7 @@ export default class Main extends Component {
             id++;
         }
 
-        let expensesToDate = Number(this.state.expensesToDate) + Number(entry.amountSpent);
+
 
         /* firebase */
         let currentUser = this.props.currentUser.displayName;
@@ -159,36 +165,11 @@ export default class Main extends Component {
 
     removeTransToApp = (entry) => {
         let transactions = this.state.transactions
-        transactions.splice(entry.entryID - 1, 1);
+        transactions.splice(entry.entryId - 1, 1);
+        let expensesToDate = Number(this.state.expensesToDate) - Number(entry.amountSpent);
+
+        this.updateFirebaseTrans(transactions, expensesToDate)
         
-        
-         let sorted = transactions.sort((a, b) => {
-             return Date.parse(b.date) - Date.parse(a.date);
-         });
-         let id = 1;
-         for (let entry of sorted) {
-             entry.id = id;
-             id++;
-         }
-         let expensesToDate = Number(this.state.expensesToDate) - Number(entry.amountSpent);
- 
-      
-         let currentUser = this.props.currentUser.displayName;
-         let userRef = firebase.database().ref(currentUser);
- 
-         let transactionsRef = userRef.child('transactions');
-         transactionsRef.set(sorted)
- 
-         let expensesToDateRef = userRef.child('expensesToDate');
-         expensesToDateRef.set(expensesToDate)
- 
-     
-         this.setState({
-             transactions: sorted
-         });
-         this.setState({
-             expensesToDate: expensesToDate
-         });
     }
 
     handleBudgetChange = (updates) => {

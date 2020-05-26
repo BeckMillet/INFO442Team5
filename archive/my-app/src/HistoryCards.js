@@ -10,20 +10,24 @@ export default class HistoryCards extends Component {
 
   render() {
     let transactions = this.props.transactions
-    let renderedEntries = transactions.map((eachEntry) => {
-      /* TODO fix each child should have a unique key*/
-      return (
-        <HistoryItem
-          key={eachEntry.id}
-          id={eachEntry.id}
-          itemName={eachEntry.itemName}
-          amountSpent={eachEntry.amountSpent}
-          date={eachEntry.date}
-          removeTransToApp={this.props.removeTransToApp}
-        //doSomething={this.doSomething} 
-        />
-      )
-    });
+    let renderedEntries = "Looks like you haven't added any transactions!"
+    
+    if (Object.keys(transactions).length > 0) {
+      renderedEntries = transactions.map((eachEntry) => {
+
+        return (
+          <HistoryItem
+            key={eachEntry.id}
+            id={eachEntry.id}
+            itemName={eachEntry.itemName}
+            amountSpent={eachEntry.amountSpent}
+            date={eachEntry.date}
+            removeTransToApp={this.props.removeTransToApp}
+          //doSomething={this.doSomething} 
+          />
+        )
+      });
+    }
     return (
       <div>
         <div className="activityBanner">LATEST ACTIVITY</div>
@@ -32,6 +36,7 @@ export default class HistoryCards extends Component {
         </Container>
       </div>
     )
+
   }
 }
 
@@ -100,7 +105,7 @@ class RemovalButtons extends Component {
 
   doRemove = (evt) => {
     this.props.removeTransToApp({
-      entryId : this.props.entryId,
+      entryId: this.props.entryId,
       amountSpent: this.props.amountSpent
     })
     this.props.toggleButtons()
