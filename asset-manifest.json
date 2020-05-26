@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/INFO442Team5/static/css/main.c6ffaccb.chunk.css",
-    "main.js": "/INFO442Team5/static/js/main.225c6f39.chunk.js",
-    "main.js.map": "/INFO442Team5/static/js/main.225c6f39.chunk.js.map",
-    "runtime-main.js": "/INFO442Team5/static/js/runtime-main.c0c09702.js",
-    "runtime-main.js.map": "/INFO442Team5/static/js/runtime-main.c0c09702.js.map",
-    "static/js/2.f31622bb.chunk.js": "/INFO442Team5/static/js/2.f31622bb.chunk.js",
-    "static/js/2.f31622bb.chunk.js.map": "/INFO442Team5/static/js/2.f31622bb.chunk.js.map",
-    "index.html": "/INFO442Team5/index.html",
-    "precache-manifest.4992bcb9b8c4b4b8ed5f376314007e77.js": "/INFO442Team5/precache-manifest.4992bcb9b8c4b4b8ed5f376314007e77.js",
-    "service-worker.js": "/INFO442Team5/service-worker.js",
-    "static/css/main.c6ffaccb.chunk.css.map": "/INFO442Team5/static/css/main.c6ffaccb.chunk.css.map",
-    "static/js/2.f31622bb.chunk.js.LICENSE.txt": "/INFO442Team5/static/js/2.f31622bb.chunk.js.LICENSE.txt"
+    "main.css": "/INFO442Team5/my-app/static/css/main.c6ffaccb.chunk.css",
+    "main.js": "/INFO442Team5/my-app/static/js/main.4b8375d5.chunk.js",
+    "main.js.map": "/INFO442Team5/my-app/static/js/main.4b8375d5.chunk.js.map",
+    "runtime-main.js": "/INFO442Team5/my-app/static/js/runtime-main.f649fd42.js",
+    "runtime-main.js.map": "/INFO442Team5/my-app/static/js/runtime-main.f649fd42.js.map",
+    "static/js/2.04d760f0.chunk.js": "/INFO442Team5/my-app/static/js/2.04d760f0.chunk.js",
+    "static/js/2.04d760f0.chunk.js.map": "/INFO442Team5/my-app/static/js/2.04d760f0.chunk.js.map",
+    "index.html": "/INFO442Team5/my-app/index.html",
+    "precache-manifest.db1c7858238617f2f1c37b04515922cf.js": "/INFO442Team5/my-app/precache-manifest.db1c7858238617f2f1c37b04515922cf.js",
+    "service-worker.js": "/INFO442Team5/my-app/service-worker.js",
+    "static/css/main.c6ffaccb.chunk.css.map": "/INFO442Team5/my-app/static/css/main.c6ffaccb.chunk.css.map",
+    "static/js/2.04d760f0.chunk.js.LICENSE.txt": "/INFO442Team5/my-app/static/js/2.04d760f0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c0c09702.js",
-    "static/js/2.f31622bb.chunk.js",
+    "static/js/runtime-main.f649fd42.js",
+    "static/js/2.04d760f0.chunk.js",
     "static/css/main.c6ffaccb.chunk.css",
-    "static/js/main.225c6f39.chunk.js"
+    "static/js/main.4b8375d5.chunk.js"
   ]
 }
