@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage":"https://BeckMillet.github.io/INFO442Team5",
+  "homepage":"https://bmaxwell99.github.io/INFO442Team5",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.14",
