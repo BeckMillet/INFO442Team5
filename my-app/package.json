@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage":"https://beckmillet.github.io/INFO442Team5",
+  "homepage": "https://beckmillet.github.io/INFO442Team5",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.14",
@@ -32,7 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy":"gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
