@@ -81,10 +81,22 @@ export default class Summary extends Component {
   showHideButton = () => {
     let button;
     if (this.props.dailyBudget === 0) {
-      button = (<Button type="submit" className="btn primary">Add your daily budget</Button>)
+      button = (
+        <Button
+          type="submit"
+          className="btn primary">
+          Add your daily budget
+        </Button>
+      )
     }
     if (this.state.updateDailyBudget !== '' & this.props.dailyBudget !== 0) {
-      button = (<Button type="submit" className="btn">Update!</Button>)
+      button = (
+        <Button
+          type="submit"
+          className="btn">
+          Update!
+        </Button>
+      )
     }
 
     return button
@@ -123,39 +135,39 @@ export default class Summary extends Component {
           </div>
           <form onSubmit={this.handleSubmit} noValidate>
             <Row>
-              
-                <Card className='col-6 budget'>
-                  <CardTitle>Daily Budget:
+
+              <Card className='col-6 budget'>
+                <CardTitle>Daily Budget:
                      <TextField
-                      className="updateDailyBudget"
-                      type="number"
-                      name="updateDailyBudget"
-                      // inputStyle={{ fontSize: '20em' }} 
-                      placeholder={this.props.dailyBudget.toString()}
-                      required
-                      error={this.state.dailyBudgetError.length === 0 ? false : true}
-                      helperText={this.state.dailyBudgetError}
-                      value={this.state.updateDailyBudget}
-                      onChange={this.fieldChange}
-                      
-                      InputProps={{
-                        
-                        startAdornment: (
-                          <InputAdornment className="" position="start">
-                            $
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                  </CardTitle>
-                </Card>
-           
-              
-                <Card body className='col-6 balance'>
-                  <CardTitle>Overall Balance:</CardTitle>
-                  <CardSubtitle>${overallBalance}</CardSubtitle>
-                </Card>
-              
+                    className="updateDailyBudget"
+                    type="number"
+                    name="updateDailyBudget"
+                    // inputStyle={{ fontSize: '20em' }} 
+                    placeholder={this.props.dailyBudget.toString()}
+                    required
+                    error={this.state.dailyBudgetError.length === 0 ? false : true}
+                    helperText={this.state.dailyBudgetError}
+                    value={this.state.updateDailyBudget}
+                    onChange={this.fieldChange}
+
+                    InputProps={{
+
+                      startAdornment: (
+                        <InputAdornment className="" position="start">
+                          $
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </CardTitle>
+              </Card>
+
+
+              <Card body className='col-6 balance'>
+                <CardTitle>Overall Balance:</CardTitle>
+                <CardSubtitle>${overallBalance}</CardSubtitle>
+              </Card>
+
             </Row>
             {this.showHideButton()}
           </form>

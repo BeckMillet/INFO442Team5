@@ -97,12 +97,13 @@ class App extends Component {
         //constructs the schema for new users
         lastDateOpenedRef.set(today)
         dailyBudgetRef.set(0)
-        transactionsRef.push(
+        /* transactionsRef.push(
           {
+            "id": 1,
             "amountSpent": 0,
             "itemName": "Sample Transaction!",
             "date": today
-          })
+          }) */
         budgetToDateRef.set(0)
         expensesToDateRef.set(0)
         //future iterations will allow users to create and modify a 'tag' list for categorization. Sample below
@@ -129,9 +130,9 @@ class App extends Component {
       content = (
         <div className="container">
           <h1>Sign In</h1>
-          <StyledFirebaseAuth 
-          uiConfig={this.uiConfig} 
-          firebaseAuth={firebase.auth()} />
+          <StyledFirebaseAuth
+            uiConfig={this.uiConfig}
+            firebaseAuth={firebase.auth()} />
         </div>
       );
     } else {
@@ -139,11 +140,11 @@ class App extends Component {
       content = (
         <div>
           <Main currentUser={this.state.user} />
-            <Row className="logoutbuttonrow">
-              <button className="btn btn-warning" onClick={this.handleSignOut}>
-                Log Out {this.state.user.displayName}
-              </button>
-            </Row>
+          <Row className="logoutbuttonrow">
+            <button className="btn btn-warning" onClick={this.handleSignOut}>
+              Log Out {this.state.user.displayName}
+            </button>
+          </Row>
         </div>
       )
     }

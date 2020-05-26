@@ -71,6 +71,7 @@ export default class EntryForm extends Component {
         formDate = new Date(formDate);
       };
       this.props.addTransToApp({
+        id: 0,
         amountSpent: this.state.entryAmount,
         date: formDate.toLocaleDateString(),
         itemName: this.state.entryName

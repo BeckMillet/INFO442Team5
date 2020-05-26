@@ -67,12 +67,12 @@ export default class Main extends Component {
 
         transactionsRef.on('value', (snapshot) => {
             if (snapshot.exists()) {
-            //captures the values
-            let transactions = snapshot.val();
+                //captures the values
+                let transactions = snapshot.val();
 
-            //places the values into a local array
-            let localArr = Object.values(transactions)
-            this.setState({ transactions: localArr })
+                //places the values into a local array
+                let localArr = Object.values(transactions)
+                this.setState({ transactions: localArr })
             }
         });
 
@@ -151,12 +151,45 @@ export default class Main extends Component {
         /* state */
         this.setState({
             transactions: sorted
-        });        
+        });
         this.setState({
             expensesToDate: expensesToDate
         });
     }
 
+    removeTransToApp = (entry) => {
+        let transactions = this.state.transactions
+        transactions.splice(entry.entryID - 1, 1);
+        
+        
+         let sorted = transactions.sort((a, b) => {
+             return Date.parse(b.date) - Date.parse(a.date);
+         });
+         let id = 1;
+         for (let entry of sorted) {
+             entry.id = id;
+             id++;
+         }
+         let expensesToDate = Number(this.state.expensesToDate) - Number(entry.amountSpent);
+ 
+      
+         let currentUser = this.props.currentUser.displayName;
+         let userRef = firebase.database().ref(currentUser);
+ 
+         let transactionsRef = userRef.child('transactions');
+         transactionsRef.set(sorted)
+ 
+         let expensesToDateRef = userRef.child('expensesToDate');
+         expensesToDateRef.set(expensesToDate)
+ 
+     
+         this.setState({
+             transactions: sorted
+         });
+         this.setState({
+             expensesToDate: expensesToDate
+         });
+    }
 
     handleBudgetChange = (updates) => {
         /* firebase */
@@ -180,36 +213,28 @@ export default class Main extends Component {
 
     render() {
         //this.calcBudgetToDate()
-        
+
         let content = (
             <div>
-                {/* Beginning of main page */}  
-               
-                    <Summary
-                        lastDateChanged={this.state.lastDateChanged}
-                        dailyBudget={this.state.dailyBudget}
-                        budgetToDate={this.state.budgetToDate}
-                        expensesToDate={this.state.expensesToDate}
-                        handleBudgetChange={this.handleBudgetChange}
-                    /* calcBudgetToDate={this.calcBudgetToDate} */
-                    /> 
-                {/* Beginning of Entry Form */}
+
+                <Summary
+                    lastDateChanged={this.state.lastDateChanged}
+                    dailyBudget={this.state.dailyBudget}
+                    budgetToDate={this.state.budgetToDate}
+                    expensesToDate={this.state.expensesToDate}
+                    handleBudgetChange={this.handleBudgetChange}
+                /* calcBudgetToDate={this.calcBudgetToDate} */
+                />
+
                 <EntryForm
                     addTransToApp={this.addTransToApp}
                     dailyBudget={this.state.dailyBudget}
                 />
-                
-                {/* End of Entry Form */}
 
-                {/* Beginning of history */}
-
-            
-               
                 {<HistoryCards
-                    transactions={this.state.transactions} />}
-                    
-               
-                {/* End of main page */}
+                    transactions={this.state.transactions}
+                    removeTransToApp={this.removeTransToApp}
+                />}
 
             </div>
         )
