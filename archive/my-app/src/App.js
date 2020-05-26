@@ -86,7 +86,7 @@ class App extends Component {
     let dailyBudgetRef = userRef.child('dailyBudget');
     let budgetToDateRef = userRef.child('budgetToDate');
     let expensesToDateRef = userRef.child('expensesToDate');
-    let transactionsRef = userRef.child('transactions');
+    //let transactionsRef = userRef.child('transactions');
 
     let today = new Date();
     today = today.toLocaleDateString()

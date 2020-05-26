@@ -41,7 +41,10 @@ export default class EntryForm extends Component {
     if (this.state.entryName === "") {
       isError = true;
       errors.nameError = 'Required!'
-    } else {
+    } else if (this.state.entryName.length > 24) {
+      isError = true;
+      errors.nameError = 'must be less than 25 char'
+    }else {
       isError = false;
       errors.nameError = ''
     }
@@ -81,7 +84,6 @@ export default class EntryForm extends Component {
       this.setState({
         entryAmount: '',
         entryName: '',
-        entryDate: '',
         amountError: "",
         nameError: ""
       })
