@@ -148,6 +148,7 @@ export default class Summary extends Component {
                     className="updateDailyBudget"
                     type="number"
                     name="updateDailyBudget"
+                    variant="outlined"
                     // inputStyle={{ fontSize: '20em' }} 
                     placeholder={placeholder}
                     required
