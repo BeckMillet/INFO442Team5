@@ -127,7 +127,7 @@ export default class Summary extends Component {
     let month = this.calcMonthName()
     today = month[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear()
 
-    let placeholde = ""
+    let placeholder = ""
     if (this.props.dailyBudget != null) {
       placeholder = this.props.dailyBudget.toString()
     }
