@@ -4,7 +4,7 @@ import './App.css';
 import Summary from './Summary'
 import EntryForm from './EntryForm'
 import HistoryCards from './HistoryCards'
-import firebase from '../node_modules/firebase';
+import firebase from 'firebase/app';
 
 import 'firebase/database';
 

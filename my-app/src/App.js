@@ -4,7 +4,7 @@ import './App.css';
 import Main from './Main'
 
 import StyledFirebaseAuth from '../node_modules/react-firebaseui/StyledFirebaseAuth';
-import firebase from '../node_modules/firebase';
+import firebase from 'firebase/app';
 import 'firebase/database';
 import { Row } from 'reactstrap';
 
