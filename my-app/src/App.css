@@ -15,8 +15,6 @@
     color: white;
     text-align: center;
     border: none;
-    padding-top: 1.25em;
-    padding-left: 1em;
 }
 .balance{
     background-color: #2A8D64;
@@ -24,7 +22,6 @@
     text-align: center;
     border: none;
     padding: none;
-
 }
 .submitbuttonrow {
     padding-left: 5%;
@@ -37,6 +34,7 @@
 }
 .logoutbuttonrow {
     padding-left: 30px;
+    margin-bottom: 5%;
 }
 
 .form{
@@ -60,4 +58,13 @@
     color: black !important;
     font-size: 1rem !important;
     font-weight: 800 !important;
+}
+
+.balance .card-title {
+    margin-bottom: 0 !important;
+}
+
+.balanceSub {
+    font-size: 45px;
+    font-weight: bold;
 }

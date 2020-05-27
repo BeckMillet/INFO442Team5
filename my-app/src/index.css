@@ -98,13 +98,13 @@ code {
   display: none;
 }
 
-@media (min-width: 400px) {
-  /* :root {
+/* @media (min-width: 400px) {
+   :root {
   display: none;
-  } */
-/* not working */
+  } 
+ not working 
   #sproutdesign{
     display: inline;
   }
 
-}
+}*/

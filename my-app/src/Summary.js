@@ -170,9 +170,9 @@ export default class Summary extends Component {
               </Card>
 
 
-              <Card body className='col-6 balance'>
+              <Card className='col-6 balance'>
                 <CardTitle>Overall Balance:</CardTitle>
-                <CardSubtitle>${overallBalance}</CardSubtitle>
+                <CardSubtitle className='balanceSub'>${overallBalance}</CardSubtitle>
               </Card>
 
             </Row>
