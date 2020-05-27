@@ -104,8 +104,21 @@ export default class Main extends Component {
                 let budgetToDateRef = userRef.child('budgetToDate');
                 let lastDateOpenedRef = userRef.child('lastDateOpened');
 
-                budgetToDateRef.set(val)
-                lastDateOpenedRef.set(today.toLocaleDateString())
+                budgetToDateRef.once("value", snapshot => {
+                    if (snapshot.exists()) {
+                        budgetToDateRef.set(val)
+                    }
+                    else {
+                    }
+                });
+                lastDateOpenedRef.once("value", snapshot => {
+                    if (snapshot.exists()) {
+                        lastDateOpenedRef.set(today.toLocaleDateString())
+                    }
+                    else {
+                    }
+                });
+
 
                 /* state */
                 this.setState({
@@ -169,7 +182,7 @@ export default class Main extends Component {
         let expensesToDate = Number(this.state.expensesToDate) - Number(entry.amountSpent);
 
         this.updateFirebaseTrans(transactions, expensesToDate)
-        
+
     }
 
     handleBudgetChange = (updates) => {
