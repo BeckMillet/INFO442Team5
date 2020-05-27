@@ -84,52 +84,54 @@ export default class Main extends Component {
         let userRef = firebase.database().ref(currentUser);
 
         userRef.once("value", snapshot => {
-            let today = new Date();
-            let lastOpened = new Date(this.state.lastDateOpened);
+            if (snapshot.exists()) {
+                let today = new Date();
+                let lastOpened = new Date(this.state.lastDateOpened);
 
-            if (lastOpened.toLocaleDateString() !== today.toLocaleDateString()) {
+                if (lastOpened.toLocaleDateString() !== today.toLocaleDateString()) {
 
-                /* caluculate days that have passed. I know its ugly. I hate it */
+                    /* caluculate days that have passed. I know its ugly. I hate it */
 
-                lastOpened = Date.UTC(lastOpened.getFullYear(), lastOpened.getMonth(), lastOpened.getDate());
-                let present = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
-                let oneDay = 1000 * 60 * 60 * 24;
-                let days = ((present - oneDay) - lastOpened) / oneDay;
+                    lastOpened = Date.UTC(lastOpened.getFullYear(), lastOpened.getMonth(), lastOpened.getDate());
+                    let present = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
+                    let oneDay = 1000 * 60 * 60 * 24;
+                    let days = ((present - oneDay) - lastOpened) / oneDay;
 
-                /* calculates amount to add to budget to date */
+                    /* calculates amount to add to budget to date */
 
-                let val = days * Number(this.state.dailyBudget) + Number(this.state.budgetToDate)
+                    let val = days * Number(this.state.dailyBudget) + Number(this.state.budgetToDate)
 
-                /* firebase */
-                let budgetToDateRef = userRef.child('budgetToDate');
-                let lastDateOpenedRef = userRef.child('lastDateOpened');
+                    /* firebase */
+                    let budgetToDateRef = userRef.child('budgetToDate');
+                    let lastDateOpenedRef = userRef.child('lastDateOpened');
 
-                budgetToDateRef.once("value", snapshot => {
-                    if (snapshot.exists()) {
-                        budgetToDateRef.set(val)
-                    }
-                    else {
-                    }
-                });
-                lastDateOpenedRef.once("value", snapshot => {
-                    if (snapshot.exists()) {
-                        lastDateOpenedRef.set(today.toLocaleDateString())
-                    }
-                    else {
-                    }
-                });
-
-
-                /* state */
-                this.setState({
-                    budgetToDate: val
-                })
-
-                this.setState({
-                    lastDateOpened: today.toLocaleDateString()
-                })
+                    budgetToDateRef.once("value", snapshot => {
+                        if (snapshot.exists()) {
+                            budgetToDateRef.set(val)
+                        }
+                        else {
+                        }
+                    });
+                    lastDateOpenedRef.once("value", snapshot => {
+                        if (snapshot.exists()) {
+                            lastDateOpenedRef.set(today.toLocaleDateString())
+                        }
+                        else {
+                        }
+                    });
 
 
+                    /* state */
+                    this.setState({
+                        budgetToDate: val
+                    })
+
+                    this.setState({
+                        lastDateOpened: today.toLocaleDateString()
+                    })
+
+
+                }
             }
 
         });

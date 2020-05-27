@@ -126,6 +126,12 @@ export default class Summary extends Component {
     let today = new Date();
     let month = this.calcMonthName()
     today = month[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear()
+
+    let placeholde = ""
+    if (this.props.dailyBudget != null) {
+      placeholder = this.props.dailyBudget.toString()
+    }
+
     return (
       <div>
 
@@ -143,7 +149,7 @@ export default class Summary extends Component {
                     type="number"
                     name="updateDailyBudget"
                     // inputStyle={{ fontSize: '20em' }} 
-                    placeholder={this.props.dailyBudget.toString()}
+                    placeholder={placeholder}
                     required
                     error={this.state.dailyBudgetError.length === 0 ? false : true}
                     helperText={this.state.dailyBudgetError}
