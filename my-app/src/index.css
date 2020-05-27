@@ -88,9 +88,9 @@ code {
 }
 
 @media (min-width: 400px) {
-  :root {
+  /* :root {
   display: none;
-  }
+  } */
 /* not working */
   #sproutdesign{
     display: inline;
