@@ -32,6 +32,12 @@
     color: white !important;
     margin-left: 8em !important;
 }
+
+.MuiButton-root {
+    font-family: "Poppins", "Times New Roman", Times, serif !important;
+    font-weight: 600 !important;
+}
+
 .logoutbuttonrow {
     padding-left: 30px;
     margin-bottom: 5%;
@@ -65,6 +71,35 @@
 }
 
 .balanceSub {
-    font-size: 45px;
+    font-size: 30px;
     font-weight: bold;
 }
+.budgetTitle .MuiOutlinedInput-input {
+    padding: 0;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    font-family: "Poppins", "Times New Roman", Times, serif;
+}
+
+.head .MuiTypography-body1 {
+    padding: 0;
+    margin-left: 5px;
+    font-size: 30px;
+    font-weight: bold !important;
+    color: white !important;
+    font-family: "Poppins", "Times New Roman", Times, serif !important;
+}
+
+.MuiInputBase-input {
+    box-sizing: border-box !important;
+}
+
+.head .MuiOutlinedInput-adornedStart{
+    padding-left: 0px !important;
+}
+
+.head .PrivateNotchedOutline-root-76 {
+    border-style: none !important;
+}
+

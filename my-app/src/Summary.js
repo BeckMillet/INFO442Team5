@@ -140,16 +140,14 @@ export default class Summary extends Component {
             {today}
           </div>
           <form onSubmit={this.handleSubmit} noValidate>
-            <Row>
+            <Row className='head'>
 
               <Card className='col-6 budget'>
-                <CardTitle>Daily Budget:
+                <CardTitle className="budgetTitle">Daily Budget:
                      <TextField
-                    className="updateDailyBudget"
                     type="number"
                     name="updateDailyBudget"
                     variant="outlined"
-                    // inputStyle={{ fontSize: '20em' }} 
                     placeholder={placeholder}
                     required
                     error={this.state.dailyBudgetError.length === 0 ? false : true}

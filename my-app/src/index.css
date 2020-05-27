@@ -36,20 +36,18 @@ code {
 }
 
 .logoutbutton {
-  font-weight: 500;
+  font-weight: 600;
   background-color: #FFC107 !important;
   color: white !important;
   margin-left: 7em !important;
-  font-weight: 600;
 }
 
 .removebutton {
-  font-weight: 500;
   background-color: #E7815A !important;
   color: white !important;
   margin-left: 9em !important;
-  padding-top: 2em;
   font-weight: 600;
+  margin-top: 6% !important;
 }
 
 .historytitle {
