@@ -141,8 +141,8 @@ class App extends Component {
         <div>
           <Main currentUser={this.state.user} />
           <Row className="logoutbuttonrow">
-            <button className="btn btn-warning" onClick={this.handleSignOut}>
-              Log Out {this.state.user.displayName}
+            <button className="btn logoutbutton" onClick={this.handleSignOut}>
+              LOG OUT
             </button>
           </Row>
         </div>

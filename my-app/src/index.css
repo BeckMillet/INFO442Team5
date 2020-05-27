@@ -35,23 +35,32 @@ code {
   padding-bottom: 3%;
 }
 
-.btn-warning{
-  position: center;
-  justify-content: center !important;
-  font-size: 16px;
-  font-family: "Poppins", "Times New Roman", Times, serif;
-  margin-left: 15%;
+.logoutbutton {
   font-weight: 500;
-  margin-bottom: 5%;
+  background-color: #FFC107 !important;
+  color: white !important;
+  margin-left: 7em !important;
+  font-weight: 600;
+}
+
+.removebutton {
+  font-weight: 500;
+  background-color: #E7815A !important;
+  color: white !important;
+  margin-left: 9em !important;
+  padding-top: 2em;
+  font-weight: 600;
 }
 
 .historytitle {
   font-weight: 600 !important;
-  Color: #666666
+  Color: #666666;
+  padding-top: 1em;
 }
 
 .historydate{
   font-size: .80em;
+  padding-bottom: 1em;
 }
 
 .historyamount{
@@ -59,6 +68,8 @@ code {
   text-align: right;
   Color: #666666;
   font-size: 1.1em;
+  padding-top: 1.5em;
+
 }
 
 .itemform{

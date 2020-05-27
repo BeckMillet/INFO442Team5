@@ -119,7 +119,7 @@ class RemovalButtons extends Component {
           <Button
             onClick={this.doRemove}
             variant="outlined"
-            className="submitbutton">
+            className="removebutton">
             Remove
         </Button>
         </div>)
