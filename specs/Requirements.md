@@ -4,7 +4,7 @@
 1. The webpage is responsive and all transaction entry components will fit within the iPhone X standard size mobile screen (375x812px).
 
 - **Verification:** Manually confirm all images and forms are readable by resizing the web application from desktop to mobile screens using inspect. We are confirming that all the elements of the components are approximately the  intended sizes.
-- ``{Revised: All the transaction entry components and application text will fit within the iPhone X standard size mobile screen (375x812px). We are essentially designing a mobile app using web technology so responsiveness on the desktop view is not relevant. The default usage is on the mobile screen size.}``
+- ``{Revised: All the transaction entry components and application text will fit within the iPhone X standard size mobile screen (375x812px). We are essentially designing a mobile app using web technology so responsiveness on the desktop view is not relevant. The default usage is on the mobile screen size. We want users to interact with our app on their phones as they make purchases throughout the day.}``
 
 2. ``{Complete}``The app will be divided into three sections: budget summary depicting ‘daily budget’ and the ‘overall balance’  from the user’s inputted transactions, an ‘entry form’, and a list of latest transactions. Each component is defined below.
 - **Verification:** Visually confirm that the three components render within expectations of the requirements. This requirement doesn’t require intense testing, we will consider the requirement complete as long as each of the sections are in the correct order of: budget summary,  entry form, and latest transactions. 
