@@ -122,6 +122,7 @@ export default class Summary extends Component {
 
   render() {
     let overallBalance = Number(this.props.budgetToDate) + Number(this.props.dailyBudget) - Number(this.props.expensesToDate);
+    overallBalance = overallBalance.toFixed(2)
 
     let today = new Date();
     let month = this.calcMonthName()

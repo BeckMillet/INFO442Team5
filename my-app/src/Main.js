@@ -100,6 +100,7 @@ export default class Main extends Component {
                     /* calculates amount to add to budget to date */
 
                     let val = days * Number(this.state.dailyBudget) + Number(this.state.budgetToDate)
+                    val = val.toFixed(2);
 
                     /* firebase */
                     let budgetToDateRef = userRef.child('budgetToDate');
@@ -141,8 +142,8 @@ export default class Main extends Component {
         let transactions = this.state.transactions
         transactions.unshift(entry);
         let expensesToDate = Number(this.state.expensesToDate) + Number(entry.amountSpent);
-
-
+        expensesToDate = expensesToDate.toFixed(2);
+        
         this.updateFirebaseTrans(transactions, expensesToDate)
     }
 
@@ -182,6 +183,7 @@ export default class Main extends Component {
         let transactions = this.state.transactions
         transactions.splice(entry.entryId - 1, 1);
         let expensesToDate = Number(this.state.expensesToDate) - Number(entry.amountSpent);
+        expensesToDate.toFixed(2);
 
         this.updateFirebaseTrans(transactions, expensesToDate)
 
@@ -206,10 +208,10 @@ export default class Main extends Component {
         })
     }
 
-
+    
     render() {
-        //this.calcBudgetToDate()
-
+        
+    
         let content = (
             <div>
 

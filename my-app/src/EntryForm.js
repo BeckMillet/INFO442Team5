@@ -29,12 +29,11 @@ export default class EntryForm extends Component {
   validate = () => {
     let isError = false;
     let errors = {}
-
+    
     if (this.state.entryAmount < .01) {
       isError = true;
       errors.amountError = 'Must be positive and non-zero'
     } else {
-      isError = false;
       errors.amountError = ''
     }
 
@@ -45,10 +44,9 @@ export default class EntryForm extends Component {
       isError = true;
       errors.nameError = 'must be less than 25 char'
     }else {
-      isError = false;
       errors.nameError = ''
     }
-
+    
     if (isError) {
       this.setState({
         ...this.state,
@@ -75,7 +73,7 @@ export default class EntryForm extends Component {
       };
       this.props.addTransToApp({
         id: 0,
-        amountSpent: this.state.entryAmount,
+        amountSpent: Number(this.state.entryAmount).toFixed(2),
         date: formDate.toLocaleDateString(),
         itemName: this.state.entryName
       })
