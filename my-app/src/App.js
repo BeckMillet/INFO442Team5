@@ -36,38 +36,6 @@ class App extends Component {
       this.setState({ user: firebaseUser });
     })
 
-    /* let currentUser = this.state.user.displayName;
-    let userRef = firebase.database().ref(currentUser);
-
-    let lastDateOpenedRef = userRef.child('lastDateOpened');
-    let dailyBudgetRef = userRef.child('dailyBudget');
-    let budgetToDateRef = userRef.child('budgetToDate');
-    let expensesToDateRef = userRef.child('expensesToDate');
-    let transactionsRef = userRef.child('transactions');
-     */
-
-    /* TODO delete sample data */
-    /* this.setState({
-      transactions: SAMPLE_TRANSACTIONS.transactions
-    })
-    this.setState({
-      dailyBudget: 25
-    })
-    this.setState({
-      lastDateChanged: '4/20/2020'
-    })
-    this.setState({
-      expensesToDate: 79.36
-    })
-
-    this.setState({
-      budgetToDate: 100
-    })
-
-    this.setState({
-      lastDateOpened: new Date('4/23/2020')
-    }) */
-
   }
 
   /* firebase */
@@ -79,7 +47,7 @@ class App extends Component {
 
 
   handleNewUser = () => {
-    let currentUser = this.state.user.displayName;
+    let currentUser = this.state.user.uid;
     let userRef = firebase.database().ref(currentUser);
 
     let lastDateOpenedRef = userRef.child('lastDateOpened');

@@ -5,17 +5,6 @@ import 'firebase/database';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
-// import PropTypes from "prop-types";
-// import { withStyles } from "@material-ui/core/styles";
-
-// const styles = {
-//   root: {
-//     background: "black"
-//   },
-//   input: {
-//     color: "white"
-//   }
-// };
 
 
 export default class Summary extends Component {
@@ -29,7 +18,6 @@ export default class Summary extends Component {
     this.fieldChange = this.fieldChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
   fieldChange(elem) {
     const newState = {};

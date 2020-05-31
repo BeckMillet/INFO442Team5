@@ -7,11 +7,6 @@ import HistoryItem from './HistoryItem'
 
 
 export default class HistoryCards extends Component {
-
-  handleClickOutside = () => {
-    console.log('onClickOutside() method called')
-  }
-  
   render() {
     let transactions = this.props.transactions
     let renderedEntries = "Looks like you haven't added any transactions!"
