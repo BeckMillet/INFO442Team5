@@ -19,8 +19,7 @@ export default class Main extends Component {
             dailyBudget: '',
             budgetToDate: '',
             expensesToDate: '',
-            transactions: [],
-            lastInteractedDate: ''
+            transactions: []
         };
     }
 
@@ -78,10 +77,6 @@ export default class Main extends Component {
         });
 
         this.calcBudgetToDate()
-
-        let today = new Date()
-        today = today.toLocaleDateString()
-        this.setState({ lastInteractedDate: today })
     }
 
     calcBudgetToDate() {
