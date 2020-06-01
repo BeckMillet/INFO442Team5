@@ -83,7 +83,6 @@ export default class Main extends Component {
     }
 
     calcBudgetToDate() {
-        console.log('updated!')
         let currentUser = this.props.currentUser.uid;
         let userRef = firebase.database().ref(currentUser);
 

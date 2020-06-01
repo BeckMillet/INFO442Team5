@@ -50,6 +50,7 @@ class App extends Component {
     let currentUser = this.state.user.uid;
     let userRef = firebase.database().ref(currentUser);
 
+    let userNameRef = userRef.child('displayName')
     let lastDateOpenedRef = userRef.child('lastDateOpened');
     let dailyBudgetRef = userRef.child('dailyBudget');
     let budgetToDateRef = userRef.child('budgetToDate');
@@ -63,6 +64,7 @@ class App extends Component {
     userRef.once("value", snapshot => {
       if (!snapshot.exists()) {
         //constructs the schema for new users
+        userNameRef.set(this.state.user.displayName)
         lastDateOpenedRef.set(today)
         dailyBudgetRef.set(0)
         /* transactionsRef.push(
