@@ -19,9 +19,9 @@ export default class Main extends Component {
             dailyBudget: '',
             budgetToDate: '',
             expensesToDate: '',
-            transactions: []
+            transactions: [],
+            lastInteractedDate: ''
         };
-        this.calcBudgetToDate = this.calcBudgetToDate.bind(this);
     }
 
     componentDidMount() {
@@ -79,7 +79,9 @@ export default class Main extends Component {
 
         this.calcBudgetToDate()
 
-        document.addEventListener('click', this.calcBudgetToDate());
+        let today = new Date()
+        today = today.toLocaleDateString()
+        this.setState({ lastInteractedDate: today })
     }
 
     calcBudgetToDate() {
@@ -141,6 +143,7 @@ export default class Main extends Component {
         });
 
     }
+
     addTransToApp = (entry) => {
         let transactions = this.state.transactions
         transactions.unshift(entry);
@@ -180,6 +183,8 @@ export default class Main extends Component {
         this.setState({
             expensesToDate: expensesToDate
         });
+
+        this.calcBudgetToDate();
     }
 
     removeTransToApp = (entry) => {
@@ -209,52 +214,39 @@ export default class Main extends Component {
         this.setState({
             dailyBudget: updates.dailyBudget
         })
+
+        this.calcBudgetToDate();
     }
 
 
     render() {
-        let currentUser = this.props.currentUser.uid;
-        let userRef = firebase.database().ref(currentUser);
 
-        userRef.once("value", snapshot => {
-            if (snapshot.exists()) {
-                let today = new Date();
-                let lastOpened = new Date(this.state.lastDateOpened);
+        let content = (
+            <div>
 
-                if (lastOpened.toLocaleDateString() !== today.toLocaleDateString()) {
-                    this.calcBudgetToDate()
-                }
-            }
-        })
-            
+                <Summary
+                    calcBudgetToDate={this.calcBudgetToDate}
+                    lastDateChanged={this.state.lastDateChanged}
+                    dailyBudget={this.state.dailyBudget}
+                    budgetToDate={this.state.budgetToDate}
+                    expensesToDate={this.state.expensesToDate}
+                    handleBudgetChange={this.handleBudgetChange}
+                />
 
+                <EntryForm
+                    calcBudgetToDate={this.calcBudgetToDate}
+                    addTransToApp={this.addTransToApp}
+                    dailyBudget={this.state.dailyBudget}
+                />
 
-            let content = (
-                <div>
+                {<HistoryCards
+                    transactions={this.state.transactions}
+                    removeTransToApp={this.removeTransToApp}
+                />}
 
-                    <Summary
-                        calcBudgetToDate={this.calcBudgetToDate}
-                        lastDateChanged={this.state.lastDateChanged}
-                        dailyBudget={this.state.dailyBudget}
-                        budgetToDate={this.state.budgetToDate}
-                        expensesToDate={this.state.expensesToDate}
-                        handleBudgetChange={this.handleBudgetChange}
-                    />
-
-                    <EntryForm
-                        calcBudgetToDate={this.calcBudgetToDate}
-                        addTransToApp={this.addTransToApp}
-                        dailyBudget={this.state.dailyBudget}
-                    />
-
-                    {<HistoryCards
-                        transactions={this.state.transactions}
-                        removeTransToApp={this.removeTransToApp}
-                    />}
-
-                </div>
-            )
-            return (content)
-        }
+            </div>
+        )
+        return (content)
+    }
 
 }
