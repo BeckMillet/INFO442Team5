@@ -36,6 +36,7 @@
 .MuiButton-root {
     font-family: "Poppins", "Times New Roman", Times, serif !important;
     font-weight: 600 !important;
+    color: white !important;
 }
 
 .logoutbuttonrow {
@@ -102,4 +103,8 @@
 .head .PrivateNotchedOutline-root-76 {
     border-style: none !important;
 }
-
+.MuiFormHelperText-root.Mui-error {
+    color: white !important;
+    font-size: 15px !important;
+    width: 140px;
+}
