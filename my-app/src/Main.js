@@ -86,6 +86,7 @@ export default class Main extends Component {
         userRef.once("value", snapshot => {
             if (snapshot.exists()) {
                 let today = new Date();
+                console.log(today)
                 let lastOpened = new Date(this.state.lastDateOpened);
 
                 if (lastOpened.toLocaleDateString() !== today.toLocaleDateString()) {
