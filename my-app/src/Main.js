@@ -86,7 +86,7 @@ export default class Main extends Component {
         userRef.once("value", snapshot => {
             if (snapshot.exists()) {
                 let today = new Date();
-                console.log(today)
+                console.log("today is: "+ today.toLocaleDateString())
                 let lastOpened = new Date(this.state.lastDateOpened);
 
                 if (lastOpened.toLocaleDateString() !== today.toLocaleDateString()) {
@@ -96,8 +96,8 @@ export default class Main extends Component {
                     lastOpened = Date.UTC(lastOpened.getFullYear(), lastOpened.getMonth(), lastOpened.getDate());
                     let present = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())
                     let oneDay = 1000 * 60 * 60 * 24;
-                    let days = ((present - oneDay) - lastOpened) / oneDay;
-
+                    let days = ((present) - lastOpened) / oneDay;
+                    console.log("its been "+days+" days since last opened on the "+ this.state.lastDateOpened)
                     /* calculates amount to add to budget to date */
 
                     let val = days * Number(this.state.dailyBudget) + Number(this.state.budgetToDate)
